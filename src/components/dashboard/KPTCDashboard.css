@@ -2427,8 +2427,8 @@ tr.clickable:hover td:first-child::before {
 
 /* Dark mode specific styles */
 body.dark-mode {
-  background-color: #111827;
-  color: #e2e8f0;
+  background-color: #0f172a;
+  color: #f1f5f9;
 }
 
 body.dark-mode .sidebar {
@@ -2442,11 +2442,11 @@ body.dark-mode .brand {
 
 body.dark-mode .menu-item:hover, 
 body.dark-mode .menu-item.active {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 body.dark-mode .main-content {
-  background-color: #111827;
+  background-color: #0f172a;
 }
 
 body.dark-mode .stat-card, 
@@ -2454,107 +2454,116 @@ body.dark-mode .chart-container,
 body.dark-mode .filter-section, 
 body.dark-mode table, 
 body.dark-mode .footer {
-  background-color: #1f2937;
-  border-color: rgba(255, 255, 255, 0.05);
+  background-color: #1e293b;
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 body.dark-mode th {
-  background-color: #2d3748;
-  color: #e2e8f0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #334155;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
 }
 
 body.dark-mode td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: #e2e8f0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
 }
 
 body.dark-mode .filter-input, 
 body.dark-mode .filter-select {
-  background-color: #2d3748;
-  border-color: rgba(255, 255, 255, 0.1);
-  color: #e2e8f0;
+  background-color: #334155;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
 }
 
 body.dark-mode tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+body.dark-mode tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 body.dark-mode tr:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.07);
 }
 
 body.dark-mode .header-left h1 {
-  color: #e2e8f0;
+  color: #ffffff;
+  text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
 body.dark-mode .stat-card-value, 
 body.dark-mode .job-card-count, 
 body.dark-mode .kpi-value, 
 body.dark-mode .chart-value {
-  color: #e2e8f0;
+  color: #ffffff;
+  text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
 body.dark-mode .stat-card-title,
 body.dark-mode .job-card-description,
 body.dark-mode .filter-label,
 body.dark-mode .chart-description {
-  color: #cbd5e0;
+  color: #e2e8f0;
 }
 
 body.dark-mode .stat-card-total {
-  color: #cbd5e0;
+  color: #e2e8f0;
 }
 
 body.dark-mode .chart-title {
-  color: #e2e8f0;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 body.dark-mode .footer {
-  color: #cbd5e0;
+  color: #e2e8f0;
 }
 
 body.dark-mode .dark-mode-toggle {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .dark-mode-toggle:hover {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
+body.dark-mode .dark-mode-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
 body.dark-mode .dark-mode-toggle i {
-  color: #e2e8f0;
+  color: #f1f5f9;
 }
 
 body.dark-mode .filter-title,
 body.dark-mode .table-title,
 body.dark-mode .filter-label,
 body.dark-mode .table-actions button {
-  color: #e2e8f0;
+  color: #ffffff;
 }
 
 body.dark-mode .filter-button {
-  background-color: #3a5a9e;
-  color: white;
+  background-color: #4f76c7;
+  color: #ffffff;
+  font-weight: 600;
 }
 
 body.dark-mode .filter-button.secondary {
-  background-color: #374151;
-  color: #e2e8f0;
+  background-color: #475569;
+  color: #f1f5f9;
 }
 
 body.dark-mode .process-step {
-  background-color: #2d3748;
-  color: #e2e8f0;
+  background-color: #334155;
+  color: #f1f5f9;
 }
 
 body.dark-mode .process-step.active {
-  background-color: #3a5a9e;
+  background-color: #4f76c7;
 }
 
 body.dark-mode .notifications,
 body.dark-mode .language-selector {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 body.dark-mode .badge {
@@ -2600,33 +2609,35 @@ body.dark-mode .filter-button {
 
 /* Improve dark mode status badges */
 body.dark-mode .status-badge {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   text-shadow: none;
+  font-weight: 700;
 }
 
 body.dark-mode .status-badge.status-estimation {
-  background-color: rgba(0, 112, 209, 0.25);
-  color: #4dabf7;
+  background-color: rgba(56, 189, 248, 0.3);
+  color: #7dd3fc;
 }
 
 body.dark-mode .status-badge.status-warranty {
-  background-color: rgba(235, 47, 150, 0.25);
-  color: #f783ac;
+  background-color: rgba(249, 115, 170, 0.3);
+  color: #f9a8d4;
 }
 
 body.dark-mode .status-badge.status-submitted {
-  background-color: rgba(250, 173, 20, 0.25);
-  color: #ffd43b;
+  background-color: rgba(250, 204, 21, 0.3);
+  color: #fde047;
 }
 
 /* Increase visibility for key buttons in dark mode */
 body.dark-mode .action-button {
-  background-color: #2d3748;
-  color: #e2e8f0;
+  background-color: #334155;
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .action-button:hover {
-  background-color: #4a5568;
+  background-color: #475569;
 }
 
 /* Improve focus states for inputs in dark mode */
@@ -2634,4 +2645,50 @@ body.dark-mode .filter-input:focus,
 body.dark-mode .filter-select:focus {
   border-color: #4c6ef5;
   box-shadow: 0 0 0 2px rgba(76, 110, 245, 0.25);
+}
+
+/* Improve visibility of job cards in dark mode */
+body.dark-mode .job-card {
+  background-color: #1e293b;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .job-card-icon {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+body.dark-mode .job-card-title {
+  color: #ffffff;
+}
+
+/* Improve visibility of tables and data in dark mode */
+body.dark-mode .table-container {
+  background-color: #1e293b;
+}
+
+body.dark-mode .table-title {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+/* Improve form inputs in dark mode */
+body.dark-mode .filter-input::placeholder,
+body.dark-mode .filter-select::placeholder {
+  color: #94a3b8;
+}
+
+/* Improve chart legends and labels in dark mode */
+body.dark-mode .chart-legend-item {
+  color: #f1f5f9;
+}
+
+/* Improve KPI cards in dark mode */
+body.dark-mode .kpi-card {
+  background-color: #1e293b;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .kpi-title {
+  color: #f1f5f9;
 } 
