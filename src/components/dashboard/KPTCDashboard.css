@@ -368,6 +368,7 @@ body.rtl-layout .user-profile .placeholder-img {
   box-shadow: 0 3px 12px rgba(0,0,0,0.15);
   border: none;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: none;
 }
 
 .mobile-menu-btn:active {
