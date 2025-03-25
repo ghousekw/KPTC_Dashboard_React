@@ -112,6 +112,7 @@ const KPTCDashboard = () => {
               </div>
             </div>
           </div>
+          <div className="logo-text">Kuwait Public Transport Company</div>
         </div>
         
         <div className="menu-item active">
