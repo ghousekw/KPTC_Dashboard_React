@@ -98,16 +98,23 @@ const KPTCDashboard = () => {
       <div className={`sidebar ${sidebarActive ? 'active' : ''}`}>
         <div className="brand">
           <div className="logo-container">
-            <img src="/assets/images/kptc-logo.png" alt="KPTC Logo" 
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  document.querySelector('.svg-fallback').style.display = 'flex';
-                }} />
-            <div className="svg-fallback">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 60">
-                <text x="10" y="40" fill="#223b73" fontSize="40" fontWeight="bold" fontFamily="Arial, sans-serif">KPTC</text>
-                <circle cx="140" cy="20" r="10" fill="#e63946"/>
-              </svg>
+            {/* Use SVG logo for better visibility */}
+            <img 
+              src="/assets/images/logo.svg" 
+              alt="KPTC Logo" 
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <div className="svg-fallback" style={{ display: 'none' }}>
+              <div className="fallback-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#4f76c7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 8l4 4-4 4M8 12h8"></path>
+                </svg>
+                <span style={{ color: '#ffffff', marginLeft: '5px', fontWeight: 'bold' }}>KPTC</span>
+              </div>
             </div>
           </div>
         </div>
