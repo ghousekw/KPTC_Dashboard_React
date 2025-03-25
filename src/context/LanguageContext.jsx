@@ -595,6 +595,113 @@ const translations = {
   },
   'Handover to client': {
     ar: 'التسليم للعميل'
+  },
+  // Job Order Trends Chart translations
+  'Monthly Job Order Trends': {
+    ar: 'اتجاهات أوامر العمل الشهرية'
+  },
+  'New Orders': {
+    ar: 'أوامر عمل جديدة'
+  },
+  'Completed Orders': {
+    ar: 'أوامر العمل المكتملة'
+  },
+  'Jan': {
+    ar: 'يناير'
+  },
+  'Feb': {
+    ar: 'فبراير'
+  },
+  'Mar': {
+    ar: 'مارس'
+  },
+  'Apr': {
+    ar: 'أبريل'
+  },
+  'May': {
+    ar: 'مايو'
+  },
+  'Jun': {
+    ar: 'يونيو'
+  },
+  'Jul': {
+    ar: 'يوليو'
+  },
+  'Aug': {
+    ar: 'أغسطس'
+  },
+  'Sep': {
+    ar: 'سبتمبر'
+  },
+  'Oct': {
+    ar: 'أكتوبر'
+  },
+  'Nov': {
+    ar: 'نوفمبر'
+  },
+  'Dec': {
+    ar: 'ديسمبر'
+  },
+  // Detailed Status Breakdown translations
+  'Detailed Status Breakdown': {
+    ar: 'تفصيل حالة العمل'
+  },
+  'In Register': {
+    ar: 'في السجل'
+  },
+  'Active initial JOs': {
+    ar: 'أوامر العمل الأولية النشطة'
+  },
+  'Pending QA': {
+    ar: 'في انتظار ضمان الجودة'
+  },
+  'Awaiting quality check': {
+    ar: 'في انتظار فحص الجودة'
+  },
+  'Ready for Delivery': {
+    ar: 'جاهز للتسليم'
+  },
+  'Completed and ready': {
+    ar: 'مكتمل وجاهز'
+  },
+  'Parts Pending': {
+    ar: 'قطع الغيار معلقة'
+  },
+  'Waiting for parts': {
+    ar: 'في انتظار قطع الغيار'
+  },
+  // Repair Jobs Status Breakdown translations
+  'Repair Jobs Status Breakdown': {
+    ar: 'تفصيل حالة مهام الإصلاح'
+  },
+  'Completed': {
+    ar: 'مكتمل'
+  },
+  'Waiting Parts': {
+    ar: 'في انتظار قطع الغيار'
+  },
+  // Workflow Status Chart translations
+  'Approved Workflow Status': {
+    ar: 'حالة سير العمل المعتمدة'
+  },
+  'Stage 1': {
+    ar: 'المرحلة 1'
+  },
+  'Stage 2': {
+    ar: 'المرحلة 2'
+  },
+  'Stage 3': {
+    ar: 'المرحلة 3'
+  },
+  'Stage 4': {
+    ar: 'المرحلة 4'
+  },
+  'Stage 5': {
+    ar: 'المرحلة 5'
+  },
+  // Filter functionality
+  'Filter': {
+    ar: 'تصفية'
   }
 };
 
