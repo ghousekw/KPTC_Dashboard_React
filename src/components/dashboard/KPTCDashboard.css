@@ -2748,4 +2748,129 @@ body.dark-mode .status-badge.completed {
 body.dark-mode .status-badge.hold {
   background-color: rgba(59, 130, 246, 0.3);
   color: #93c5fd;
+}
+
+/* Improve dark mode text visibility for additional UI components */
+body.dark-mode .filter-title {
+  color: #f1f5f9;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .filter-label {
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+body.dark-mode .filter-label i {
+  color: #93c5fd;
+}
+
+body.dark-mode .quick-action-panel {
+  background-color: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .quick-action-panel-title {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+body.dark-mode .quick-action-panel-count {
+  color: #f8fafc;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .quick-action-panel-description {
+  color: #cbd5e1;
+}
+
+body.dark-mode .quick-action-panel-link {
+  color: #93c5fd;
+}
+
+body.dark-mode .detailed-stat-card {
+  background-color: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .detailed-stat-card-title {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+body.dark-mode .detailed-stat-card-desc {
+  color: #cbd5e1;
+}
+
+body.dark-mode .job-card-details {
+  background-color: #1e293b;
+}
+
+body.dark-mode .info-label {
+  color: #cbd5e1;
+}
+
+body.dark-mode .info-value {
+  color: #f1f5f9;
+}
+
+body.dark-mode .cost-summary {
+  background-color: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .cost-summary-item {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+body.dark-mode .cost-summary-item.total {
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .cost-label {
+  color: #cbd5e1;
+}
+
+body.dark-mode .cost-value {
+  color: #f1f5f9;
+}
+
+body.dark-mode .cost-value small {
+  color: #cbd5e1;
+}
+
+body.dark-mode .chart-tab {
+  color: #cbd5e1;
+}
+
+body.dark-mode .chart-tab.active {
+  color: #93c5fd;
+}
+
+body.dark-mode .chart-tab.active::after {
+  background-color: #60a5fa;
+}
+
+body.dark-mode .cost-details {
+  background-color: #1e293b;
+}
+
+body.dark-mode .cost-details-title {
+  color: #f1f5f9;
+  border-left-color: #60a5fa;
+}
+
+body.dark-mode .cost-detail-label {
+  color: #cbd5e1;
+}
+
+body.dark-mode .cost-detail-value {
+  color: #f1f5f9;
+}
+
+body.dark-mode .cost-detail-value strong {
+  color: #93c5fd;
 } 
