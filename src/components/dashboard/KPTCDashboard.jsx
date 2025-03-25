@@ -99,7 +99,7 @@ const KPTCDashboard = () => {
         <div className="brand">
           <div className="logo-container">
             <img 
-              src="/assets/images/logo.svg" 
+              src="/assets/images/kptc-logo.png" 
               alt="KPTC Logo" 
               onError={(e) => {
                 e.target.style.display = 'none';

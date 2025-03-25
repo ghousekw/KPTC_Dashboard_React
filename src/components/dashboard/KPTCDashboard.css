@@ -188,7 +188,7 @@ body.rtl-layout .user-profile .placeholder-img {
 .brand .logo-container {
   position: relative;
   width: 100%;
-  height: 60px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,10 +200,10 @@ body.rtl-layout .user-profile .placeholder-img {
 }
 
 .brand img {
-  max-width: 180px;
+  max-width: 200px;
   height: auto;
   object-fit: contain;
-  max-height: 50px;
+  max-height: 65px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   transition: all 0.3s ease;
   position: relative;
