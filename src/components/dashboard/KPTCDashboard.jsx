@@ -174,7 +174,7 @@ const KPTCDashboard = () => {
       </div>
       
       {/* Main Content */}
-      <div className="main-content" style={{ width: '100%' }}>
+      <div className="main-content">
         {/* Header */}
         <div className="header">
           <div className="header-left">
