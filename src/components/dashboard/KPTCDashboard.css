@@ -204,7 +204,7 @@ body.rtl-layout .user-profile .placeholder-img {
   height: auto;
   object-fit: contain;
   max-height: 65px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   transition: all 0.3s ease;
   position: relative;
   z-index: 2;
