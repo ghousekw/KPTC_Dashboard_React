@@ -98,42 +98,42 @@ const KPTCDashboard = () => {
         </div>
         
         <div className="menu-item active">
-          <i className="bi bi-speedometer2"></i>
+          <i className="bi bi-graph-up"></i>
           <span>{getTranslation('Dashboard & Reports')}</span>
         </div>
         
         <div className="menu-item">
-          <i className="bi bi-building"></i>
+          <i className="bi bi-file-text"></i>
           <span>{getTranslation('MOI Reception')}</span>
         </div>
         
         <div className="menu-item">
-          <i className="bi bi-reception-4"></i>
+          <i className="bi bi-person"></i>
           <span>{getTranslation('KPTC Reception')}</span>
         </div>
         
         <div className="menu-item">
-          <i className="bi bi-truck"></i>
+          <i className="bi bi-wrench"></i>
           <span>{getTranslation('Garage')}</span>
         </div>
         
         <div className="menu-item">
-          <i className="bi bi-cart3"></i>
+          <i className="bi bi-cart"></i>
           <span>{getTranslation('Procurement')}</span>
         </div>
         
         <div className="menu-item">
-          <i className="bi bi-cash-coin"></i>
+          <i className="bi bi-card-list"></i>
           <span>{getTranslation('Accounts')}</span>
         </div>
         
         <div className="menu-item">
-          <i className="bi bi-box-seam"></i>
+          <i className="bi bi-archive"></i>
           <span>{getTranslation('Stores')}</span>
         </div>
         
         <div className="menu-item">
-          <i className="bi bi-gear"></i>
+          <i className="bi bi-sliders"></i>
           <span>{getTranslation('Master')}</span>
         </div>
         
@@ -153,7 +153,7 @@ const KPTCDashboard = () => {
         {/* Header */}
         <div className="header">
           <div className="header-left">
-            <h1><i className="bi bi-speedometer2"></i> {getTranslation('Dashboard & Reports')}</h1>
+            <h1><i className="bi bi-graph-up"></i> {getTranslation('Dashboard & Reports')}</h1>
           </div>
           <div className="header-right">
             <div className="notifications">
