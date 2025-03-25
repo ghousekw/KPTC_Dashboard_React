@@ -20,10 +20,25 @@ const KPTCDashboard = () => {
   const { getTranslation, currentLang, toggleLanguage } = useLanguage();
   const [sidebarActive, setSidebarActive] = useState(false);
   const [selectedJobCard, setSelectedJobCard] = useState(null);
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true' || false);
 
   const toggleSidebar = () => {
     setSidebarActive(!sidebarActive);
   };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Set dark mode class on body
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('darkMode', darkMode.toString());
+  }, [darkMode]);
 
   // Function to handle job card selection
   const handleJobCardClick = (jobCardId) => {
@@ -70,14 +85,14 @@ const KPTCDashboard = () => {
   }, [currentLang]);
 
   return (
-    <div className="container">
+    <div className={`container ${currentLang === 'ar' ? 'rtl-layout' : ''}`}>
       {/* Mobile Menu Button */}
       <button className="mobile-menu-btn" onClick={toggleSidebar}>
         <i className="bi bi-list"></i>
       </button>
       
       {/* Sidebar Overlay */}
-      <div className={`sidebar-overlay ${sidebarActive ? 'active' : ''}`} onClick={() => setSidebarActive(false)}></div>
+      <div className="sidebar-overlay" onClick={toggleSidebar}></div>
       
       {/* Sidebar */}
       <div className={`sidebar ${sidebarActive ? 'active' : ''}`}>
@@ -159,6 +174,9 @@ const KPTCDashboard = () => {
             <div className="notifications">
               <i className="bi bi-bell"></i>
               <span className="badge">5</span>
+            </div>
+            <div className="dark-mode-toggle" onClick={toggleDarkMode}>
+              <i className={`bi ${darkMode ? 'bi-sun' : 'bi-moon'}`}></i>
             </div>
             <div className="language-selector" onClick={toggleLanguage}>
               <i className="bi bi-translate"></i>
