@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useLanguage } from '../../context/LanguageContext.jsx';
 import './KPTCDashboard.css';
 import StatusBarChart from '../charts/StatusBarChart.jsx';
@@ -15,6 +15,70 @@ import QuickActions from '../charts/QuickActions.jsx';
 import ExecutiveSummaryChart from '../charts/ExecutiveSummaryChart.jsx';
 import ContractingPartyOverview from '../charts/ContractingPartyOverview.jsx';
 import JobCardCostProjection from '../charts/JobCardCostProjection.jsx';
+import ExecutiveChart from '../charts/ExecutiveChart.jsx';
+
+// Sample data generator for garages
+const getGarageData = (garage) => {
+  // In a real application, this would fetch data from an API based on the selected garage
+  const baseData = {
+    all: {
+      jobOrders: 1285,
+      completedJobs: 972,
+      pendingJobs: 213,
+      totalVehicles: 524,
+      monthlyIncome: 152500,
+      weeklyIncome: 42300,
+      monthlyExpense: 37800
+    },
+    sulaibiya: {
+      jobOrders: 385,
+      completedJobs: 310,
+      pendingJobs: 75,
+      totalVehicles: 180,
+      monthlyIncome: 58200,
+      weeklyIncome: 14700,
+      monthlyExpense: 12400
+    },
+    subhan: {
+      jobOrders: 290,
+      completedJobs: 210,
+      pendingJobs: 80,
+      totalVehicles: 110,
+      monthlyIncome: 32800,
+      weeklyIncome: 8400,
+      monthlyExpense: 8600
+    },
+    ahmadi: {
+      jobOrders: 210,
+      completedJobs: 150,
+      pendingJobs: 60,
+      totalVehicles: 95,
+      monthlyIncome: 28500,
+      weeklyIncome: 7200,
+      monthlyExpense: 6800
+    },
+    fintas: {
+      jobOrders: 240,
+      completedJobs: 182,
+      pendingJobs: 58,
+      totalVehicles: 94,
+      monthlyIncome: 22000,
+      weeklyIncome: 6500,
+      monthlyExpense: 5400
+    },
+    mutla: {
+      jobOrders: 160,
+      completedJobs: 120,
+      pendingJobs: 40,
+      totalVehicles: 45,
+      monthlyIncome: 11000,
+      weeklyIncome: 5500,
+      monthlyExpense: 4600
+    }
+  };
+  
+  return baseData[garage] || baseData.all;
+};
 
 const KPTCDashboard = () => {
   const { getTranslation, currentLang, toggleLanguage, language } = useLanguage();
@@ -24,6 +88,22 @@ const KPTCDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState("dashboard");
   const [showSubmenu, setShowSubmenu] = useState(false);
+  const [selectedGarage, setSelectedGarage] = useState("all");
+
+  // List of garages
+  const garages = [
+    { value: "all", label: getTranslation("All Garages") },
+    { value: "sulaibiya", label: "MOI-Sulaibiya" },
+    { value: "subhan", label: "MOI-Subhan" },
+    { value: "ahmadi", label: "MOI-Ahmadi" },
+    { value: "fintas", label: "MOI-Fintas" },
+    { value: "mutla", label: "MOI-Mutla" }
+  ];
+  
+  // Handle garage change
+  const handleGarageChange = (e) => {
+    setSelectedGarage(e.target.value);
+  };
 
   const toggleSidebar = () => {
     setSidebarActive(!sidebarActive);
@@ -91,6 +171,12 @@ const KPTCDashboard = () => {
     document.body.classList.toggle('dark-mode', darkMode);
     document.body.classList.toggle('rtl-layout', language === 'ar');
   }, [darkMode, language]);
+
+  // Get data for the selected garage
+  const garageData = useMemo(() => getGarageData(selectedGarage), [selectedGarage]);
+  
+  // Calculate completion percentage
+  const completionPercentage = Math.round((garageData.completedJobs / garageData.jobOrders) * 100);
 
   return (
     <div className={`container ${currentLang === 'ar' ? 'rtl-layout' : ''}`}>
@@ -180,6 +266,19 @@ const KPTCDashboard = () => {
           <div className="header-left">
             <h1><i className="bi bi-graph-up"></i> {getTranslation('Dashboard & Reports')}</h1>
           </div>
+          <div className="garage-selector">
+            <select 
+              value={selectedGarage} 
+              onChange={handleGarageChange}
+              className="garage-select"
+            >
+              {garages.map((garage) => (
+                <option key={garage.value} value={garage.value}>
+                  {garage.label}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="header-right">
             <div className="notifications">
               <i className="bi bi-bell"></i>
@@ -213,61 +312,95 @@ const KPTCDashboard = () => {
         <div className="stats-container">
           <div className="stat-card primary">
             <div className="stat-card-header">
-              <div className="stat-card-title">
-                {getTranslation('Job Order Total')}
+              <div>
+                <div className="stat-card-title">{getTranslation('Total Job Orders')} {selectedGarage !== "all" && `- ${garages.find(g => g.value === selectedGarage)?.label}`}</div>
+                <div className="stat-card-value">{garageData.jobOrders}</div>
+                <div className="stat-card-total"><i className="bi bi-arrow-up"></i> {getTranslation('12% Increase')}</div>
               </div>
               <div className="stat-card-icon">
-                <i className="bi bi-list-ul"></i>
+                <i className="bi bi-file-earmark-text"></i>
               </div>
-            </div>
-            <div className="stat-card-value">16</div>
-            <div className="stat-card-total">
-              <i className="bi bi-arrow-up-right"></i> {getTranslation('All active job orders')}
             </div>
           </div>
           
           <div className="stat-card success">
             <div className="stat-card-header">
-              <div className="stat-card-title">
-                {getTranslation('Job Order Completed')}
+              <div>
+                <div className="stat-card-title">{getTranslation('Completed Jobs')}</div>
+                <div className="stat-card-value">{garageData.completedJobs}</div>
+                <div className="stat-card-total"><i className="bi bi-check-circle"></i> {completionPercentage}% {getTranslation('Completion Rate')}</div>
               </div>
               <div className="stat-card-icon">
-                <i className="bi bi-check"></i>
+                <i className="bi bi-check-square"></i>
               </div>
-            </div>
-            <div className="stat-card-value">0</div>
-            <div className="stat-card-total">
-              <i className="bi bi-calendar-check"></i> {getTranslation('Finished job orders')}
             </div>
           </div>
           
           <div className="stat-card warning">
             <div className="stat-card-header">
-              <div className="stat-card-title">
-                {getTranslation('Job Order In Progress')}
+              <div>
+                <div className="stat-card-title">{getTranslation('Pending Jobs')}</div>
+                <div className="stat-card-value">{garageData.pendingJobs}</div>
+                <div className="stat-card-total"><i className="bi bi-clipboard-check"></i> {getTranslation('Awaiting Completion')}</div>
               </div>
               <div className="stat-card-icon">
-                <i className="bi bi-gear-fill"></i>
+                <i className="bi bi-hourglass-split"></i>
               </div>
-            </div>
-            <div className="stat-card-value">16</div>
-            <div className="stat-card-total">
-              <i className="bi bi-wrench"></i> {getTranslation('Currently processing')}
             </div>
           </div>
           
           <div className="stat-card danger">
             <div className="stat-card-header">
-              <div className="stat-card-title">
-                {getTranslation('Job Order On Hold')}
+              <div>
+                <div className="stat-card-title">{getTranslation('Total Vehicles')}</div>
+                <div className="stat-card-value">{garageData.totalVehicles}</div>
+                <div className="stat-card-total"><i className="bi bi-truck"></i> {getTranslation('In Service')}</div>
               </div>
               <div className="stat-card-icon">
-                <i className="bi bi-hand-index-thumb"></i>
+                <i className="bi bi-car-front"></i>
               </div>
             </div>
-            <div className="stat-card-value">0</div>
-            <div className="stat-card-total">
-              <i className="bi bi-clock"></i> {getTranslation('Temporarily stopped')}
+          </div>
+        </div>
+
+        {/* Second row stats - Financial Overview */}
+        <div className="detailed-stats">
+          <div className="detailed-stat-card">
+            <div className="detailed-stat-card-header">
+              <div className="detailed-stat-card-icon" style={{ backgroundColor: "#4338ca" }}>
+                <i className="bi bi-currency-dollar"></i>
+              </div>
+              <div className="detailed-stat-card-title">{getTranslation('Monthly Income')}</div>
+            </div>
+            <div className="detailed-stat-card-value">${garageData.monthlyIncome.toLocaleString()}</div>
+            <div className="detailed-stat-card-desc">
+              <i className="bi bi-graph-up-arrow"></i> {getTranslation('Based on completed job orders')}
+            </div>
+          </div>
+
+          <div className="detailed-stat-card">
+            <div className="detailed-stat-card-header">
+              <div className="detailed-stat-card-icon" style={{ backgroundColor: "#0891b2" }}>
+                <i className="bi bi-calendar-week"></i>
+              </div>
+              <div className="detailed-stat-card-title">{getTranslation('Weekly Income')}</div>
+            </div>
+            <div className="detailed-stat-card-value">${garageData.weeklyIncome.toLocaleString()}</div>
+            <div className="detailed-stat-card-desc">
+              <i className="bi bi-calendar-check"></i> {getTranslation('Last 7 days')}
+            </div>
+          </div>
+
+          <div className="detailed-stat-card">
+            <div className="detailed-stat-card-header">
+              <div className="detailed-stat-card-icon" style={{ backgroundColor: "#be123c" }}>
+                <i className="bi bi-basket"></i>
+              </div>
+              <div className="detailed-stat-card-title">{getTranslation('Monthly Expenses')}</div>
+            </div>
+            <div className="detailed-stat-card-value">${garageData.monthlyExpense.toLocaleString()}</div>
+            <div className="detailed-stat-card-desc">
+              <i className="bi bi-tags"></i> {getTranslation('Parts and maintenance costs')}
             </div>
           </div>
         </div>
@@ -477,6 +610,28 @@ const KPTCDashboard = () => {
         <QuickActions />
 
         <JobOrderTrendsChart />
+
+        {/* Charts */}
+        <div className="charts-grid">
+          <ExecutiveChart selectedGarage={selectedGarage} />
+          <ContractingPartyOverview selectedGarage={selectedGarage} />
+        </div>
+
+        {/* Job Flow */}
+        <div className="job-flow-container">
+          <div className="chart-header">
+            <h3 className="chart-title">
+              <i className="bi bi-arrow-left-right"></i> 
+              {getTranslation('Job Order Flow')} 
+              {selectedGarage !== "all" && ` - ${garages.find(g => g.value === selectedGarage)?.label}`}
+            </h3>
+            <div className="chart-actions">
+              <button className="chart-action-button">
+                <i className="bi bi-three-dots"></i>
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* Footer */}
         <div className="footer">

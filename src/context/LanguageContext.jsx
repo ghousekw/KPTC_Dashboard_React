@@ -702,7 +702,24 @@ const translations = {
   // Filter functionality
   'Filter': {
     ar: 'تصفية'
-  }
+  },
+  // Garage selector
+  "All Garages": "جميع الكراجات",
+  "Garage": "كراج",
+  "Select Garage": "اختر الكراج",
+  "Completed Jobs": "المهام المكتملة",
+  "Pending Jobs": "المهام المعلقة",
+  "Total Vehicles": "إجمالي المركبات",
+  "In Service": "في الخدمة",
+  "Completion Rate": "معدل الإنجاز",
+  "Awaiting Completion": "بانتظار الإكمال",
+  "Monthly Income": "الدخل الشهري",
+  "Weekly Income": "الدخل الأسبوعي",
+  "Monthly Expenses": "المصروفات الشهرية",
+  "Based on completed job orders": "بناءً على أوامر العمل المكتملة",
+  "Last 7 days": "آخر 7 أيام",
+  "Parts and maintenance costs": "تكاليف القطع والصيانة",
+  "Total Job Orders": "إجمالي أوامر العمل",
 };
 
 // Create the language context

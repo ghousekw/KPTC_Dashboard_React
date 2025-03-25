@@ -6,7 +6,7 @@ import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, P
 // Register Chart.js components
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
-const ContractingPartyOverview = () => {
+const ContractingPartyOverview = ({ selectedGarage }) => {
   const { getTranslation } = useLanguage();
   
   // Work order acceptance/rejection data
@@ -279,11 +279,143 @@ const ContractingPartyOverview = () => {
     }
   };
 
+  // Chart data specific to each garage
+  const getChartData = () => {
+    // Base data for all garages
+    const allGaragesData = {
+      labels: [
+        'Ministry of Interior', 
+        'Ministry of Defense', 
+        'Ministry of Health', 
+        'Kuwait Oil Company', 
+        'Ministry of Education'
+      ],
+      values: [320, 240, 180, 120, 80]
+    };
+
+    // Data for specific garages
+    const garageSpecificData = {
+      sulaibiya: {
+        labels: [
+          'Ministry of Interior', 
+          'Ministry of Defense', 
+          'Kuwait Oil Company', 
+          'Ministry of Health', 
+          'PAAET'
+        ],
+        values: [110, 85, 65, 45, 30]
+      },
+      subhan: {
+        labels: [
+          'Ministry of Interior', 
+          'Ministry of Defense', 
+          'Ministry of Education', 
+          'Kuwait University', 
+          'Ministry of Health'
+        ],
+        values: [90, 65, 50, 35, 25]
+      },
+      ahmadi: {
+        labels: [
+          'Kuwait Oil Company', 
+          'Ministry of Interior', 
+          'Ministry of Defense', 
+          'Kuwait National Petroleum', 
+          'Ministry of Health'
+        ],
+        values: [80, 55, 40, 30, 20]
+      },
+      fintas: {
+        labels: [
+          'Ministry of Interior', 
+          'Ministry of Health', 
+          'Ministry of Education', 
+          'Ministry of Defense', 
+          'Kuwait Municipality'
+        ],
+        values: [75, 60, 45, 35, 25]
+      },
+      mutla: {
+        labels: [
+          'Ministry of Defense', 
+          'Ministry of Interior', 
+          'Kuwait Armed Forces', 
+          'Ministry of Health', 
+          'Ministry of Public Works'
+        ],
+        values: [55, 45, 35, 25, 20]
+      }
+    };
+
+    // Select the appropriate data based on the selected garage
+    const sourceData = selectedGarage === 'all' ? 
+      allGaragesData : 
+      garageSpecificData[selectedGarage] || allGaragesData;
+
+    return {
+      labels: sourceData.labels,
+      datasets: [
+        {
+          label: getTranslation('Job Orders'),
+          data: sourceData.values,
+          backgroundColor: [
+            'rgba(37, 99, 235, 0.6)',
+            'rgba(79, 70, 229, 0.6)',
+            'rgba(139, 92, 246, 0.6)',
+            'rgba(217, 70, 239, 0.6)',
+            'rgba(236, 72, 153, 0.6)',
+          ],
+          borderColor: [
+            'rgba(37, 99, 235, 1)',
+            'rgba(79, 70, 229, 1)',
+            'rgba(139, 92, 246, 1)',
+            'rgba(217, 70, 239, 1)',
+            'rgba(236, 72, 153, 1)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
+  };
+
+  const options = {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return `${context.parsed.x} job orders`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+  };
+
   return (
     <div className="chart-container">
       <div className="chart-header">
         <h3 className="chart-title">
-          <i className="bi bi-building"></i> {getTranslation('Contracting Party Overview')}
+          <i className="bi bi-building"></i> 
+          {getTranslation('Contracting Party Overview')}
+          {selectedGarage !== 'all' && ` - ${selectedGarage.charAt(0).toUpperCase() + selectedGarage.slice(1)}`}
         </h3>
         <div className="chart-actions">
           <button className="chart-action-button" title={getTranslation('Download')}>
@@ -407,6 +539,10 @@ const ContractingPartyOverview = () => {
             </tbody>
           </table>
         </div>
+      </div>
+      
+      <div className="chart-body">
+        <Bar data={getChartData()} options={options} />
       </div>
     </div>
   );
