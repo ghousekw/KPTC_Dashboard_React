@@ -14,7 +14,7 @@ A comprehensive React-based dashboard application for Kuwait Public Transport Co
 
 ## Demo
 
-Live demo available at: [https://kptc-dashboard-react.vercel.app](https://kptc-dashboard-react.vercel.app)
+Live demo available at: [https://dashboard.kptc.com](https://dashboard.kptc.com)
 
 ## Screenshots
 
@@ -42,8 +42,8 @@ Live demo available at: [https://kptc-dashboard-react.vercel.app](https://kptc-d
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ghousekw/KPTC_Dashboard_React.git
-   cd KPTC_Dashboard_React
+   git clone https://github.com/kptc/KPTC_Dashboard.git
+   cd KPTC_Dashboard
    ```
 
 2. Install dependencies:
@@ -222,9 +222,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Project Link: [https://github.com/ghousekw/KPTC_Dashboard_React](https://github.com/ghousekw/KPTC_Dashboard_React)
+Project Link: [https://kptc.com/dashboard](https://kptc.com/dashboard)
 
-Ghouse Shaik - [ghouse@example.com](mailto:ghouse@example.com)
+KPTC Support - [support@kptc.com](mailto:support@kptc.com)
 
 ---
 
