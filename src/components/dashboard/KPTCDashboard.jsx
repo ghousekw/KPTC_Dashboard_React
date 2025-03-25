@@ -16,10 +16,11 @@ import ExecutiveSummaryChart from '../charts/ExecutiveSummaryChart.jsx';
 import ContractingPartyOverview from '../charts/ContractingPartyOverview.jsx';
 import JobCardCostProjection from '../charts/JobCardCostProjection.jsx';
 import ExecutiveChart from '../charts/ExecutiveChart.jsx';
+import KeyPerformanceChart from '../charts/KeyPerformanceChart.jsx';
 
-// Sample data generator for garages
+// Expanded data generator for garages
 const getGarageData = (garage) => {
-  // In a real application, this would fetch data from an API based on the selected garage
+  // Base data for different garages
   const baseData = {
     all: {
       jobOrders: 1285,
@@ -28,7 +29,37 @@ const getGarageData = (garage) => {
       totalVehicles: 524,
       monthlyIncome: 152500,
       weeklyIncome: 42300,
-      monthlyExpense: 37800
+      monthlyExpense: 37800,
+      // Job orders table data
+      jobOrdersData: [
+        {
+          id: 1,
+          joNumber: "KOJMIGIM/002053000005",
+          joDate: "23/03/2025",
+          technician: "11433",
+          vehicle: "GMC",
+          garage: "MOI SULABIYA MAIN",
+          status: "Warranty Initiated"
+        },
+        {
+          id: 4,
+          joNumber: "KOJMIGIM/002053000002",
+          joDate: "20/03/2025",
+          technician: "1216098",
+          vehicle: "TOYOTA",
+          garage: "MOI SULABIYA MAIN",
+          status: "JO Submitted"
+        },
+        {
+          id: 5,
+          joNumber: "KOJMIGIM/002053000000",
+          joDate: "19/03/2025",
+          technician: "071039",
+          vehicle: "KIA",
+          garage: "MOI AHMADI",
+          status: "Estimation Approved"
+        }
+      ]
     },
     sulaibiya: {
       jobOrders: 385,
@@ -37,7 +68,28 @@ const getGarageData = (garage) => {
       totalVehicles: 180,
       monthlyIncome: 58200,
       weeklyIncome: 14700,
-      monthlyExpense: 12400
+      monthlyExpense: 12400,
+      // Job orders table data specific to Sulaibiya
+      jobOrdersData: [
+        {
+          id: 1,
+          joNumber: "KOJMIGIM/002053000005",
+          joDate: "23/03/2025",
+          technician: "11433",
+          vehicle: "GMC",
+          garage: "MOI SULABIYA MAIN",
+          status: "Warranty Initiated"
+        },
+        {
+          id: 4,
+          joNumber: "KOJMIGIM/002053000002",
+          joDate: "20/03/2025",
+          technician: "1216098",
+          vehicle: "TOYOTA",
+          garage: "MOI SULABIYA MAIN",
+          status: "JO Submitted"
+        }
+      ]
     },
     subhan: {
       jobOrders: 290,
@@ -46,7 +98,28 @@ const getGarageData = (garage) => {
       totalVehicles: 110,
       monthlyIncome: 32800,
       weeklyIncome: 8400,
-      monthlyExpense: 8600
+      monthlyExpense: 8600,
+      // Job orders table data specific to Subhan
+      jobOrdersData: [
+        {
+          id: 7,
+          joNumber: "KOJMIGIM/002053000010",
+          joDate: "25/03/2025",
+          technician: "25437",
+          vehicle: "NISSAN",
+          garage: "MOI SUBHAN",
+          status: "Estimation Approved"
+        },
+        {
+          id: 9,
+          joNumber: "KOJMIGIM/002053000011",
+          joDate: "24/03/2025",
+          technician: "25438",
+          vehicle: "TOYOTA",
+          garage: "MOI SUBHAN",
+          status: "JO Submitted"
+        }
+      ]
     },
     ahmadi: {
       jobOrders: 210,
@@ -55,7 +128,28 @@ const getGarageData = (garage) => {
       totalVehicles: 95,
       monthlyIncome: 28500,
       weeklyIncome: 7200,
-      monthlyExpense: 6800
+      monthlyExpense: 6800,
+      // Job orders table data specific to Ahmadi
+      jobOrdersData: [
+        {
+          id: 5,
+          joNumber: "KOJMIGIM/002053000000",
+          joDate: "19/03/2025",
+          technician: "071039",
+          vehicle: "KIA",
+          garage: "MOI AHMADI",
+          status: "Estimation Approved"
+        },
+        {
+          id: 11,
+          joNumber: "KOJMIGIM/002053000015",
+          joDate: "18/03/2025",
+          technician: "071040",
+          vehicle: "HONDA",
+          garage: "MOI AHMADI",
+          status: "Warranty Initiated"
+        }
+      ]
     },
     fintas: {
       jobOrders: 240,
@@ -64,7 +158,28 @@ const getGarageData = (garage) => {
       totalVehicles: 94,
       monthlyIncome: 22000,
       weeklyIncome: 6500,
-      monthlyExpense: 5400
+      monthlyExpense: 5400,
+      // Job orders table data specific to Fintas
+      jobOrdersData: [
+        {
+          id: 13,
+          joNumber: "KOJMIGIM/002053000020",
+          joDate: "22/03/2025",
+          technician: "84521",
+          vehicle: "CHEVROLET",
+          garage: "MOI FINTAS",
+          status: "JO Submitted"
+        },
+        {
+          id: 15,
+          joNumber: "KOJMIGIM/002053000022",
+          joDate: "21/03/2025",
+          technician: "84525",
+          vehicle: "TOYOTA",
+          garage: "MOI FINTAS",
+          status: "Estimation Approved"
+        }
+      ]
     },
     mutla: {
       jobOrders: 160,
@@ -73,7 +188,28 @@ const getGarageData = (garage) => {
       totalVehicles: 45,
       monthlyIncome: 11000,
       weeklyIncome: 5500,
-      monthlyExpense: 4600
+      monthlyExpense: 4600,
+      // Job orders table data specific to Mutla
+      jobOrdersData: [
+        {
+          id: 17,
+          joNumber: "KOJMIGIM/002053000030",
+          joDate: "26/03/2025",
+          technician: "93215",
+          vehicle: "KIA",
+          garage: "MOI MUTLA",
+          status: "Warranty Initiated"
+        },
+        {
+          id: 19,
+          joNumber: "KOJMIGIM/002053000032",
+          joDate: "25/03/2025",
+          technician: "93217",
+          vehicle: "MITSUBISHI",
+          garage: "MOI MUTLA",
+          status: "JO Submitted"
+        }
+      ]
     }
   };
   
@@ -306,7 +442,7 @@ const KPTCDashboard = () => {
         </div>
         
         {/* Job Card Flow - Moved to top */}
-        <JobCardFlow />
+        <JobCardFlow selectedGarage={selectedGarage} />
         
         <ExecutiveSummaryChart />
 
@@ -486,7 +622,11 @@ const KPTCDashboard = () => {
         {/* Job Orders Table */}
         <div className="table-container">
           <div className="table-header">
-            <h3 className="table-title"><i className="bi bi-list"></i> {getTranslation('Job Orders in March 2025')}</h3>
+            <h3 className="table-title">
+              <i className="bi bi-list"></i> 
+              {getTranslation('Job Orders')} 
+              {selectedGarage && selectedGarage !== "all" && ` - ${garages.find(g => g.value === selectedGarage)?.label}`}
+            </h3>
             <div className="click-helper">
               <i className="bi bi-info-circle"></i> {getTranslation('Click on a job order to view cost projection')}
             </div>
@@ -508,7 +648,6 @@ const KPTCDashboard = () => {
                 <th><i className="bi bi-hash"></i> {getTranslation('JO No.')}</th>
                 <th><i className="bi bi-calendar-date"></i> {getTranslation('JO Date')}</th>
                 <th><i className="bi bi-person-gear"></i> {getTranslation('Technician')}</th>
-                <th><i className="bi bi-credit-card"></i> {getTranslation('Plate No.')}</th>
                 <th><i className="bi bi-car-front"></i> {getTranslation('Vehicle Make')}</th>
                 <th><i className="bi bi-building"></i> {getTranslation('Garage')}</th>
                 <th><i className="bi bi-info-circle"></i> {getTranslation('JO Status')}</th>
@@ -516,73 +655,43 @@ const KPTCDashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="clickable" onClick={() => handleJobCardClick('KOJMIGIM/002053000005')}>
-                <td>1</td>
-                <td>KOJMIGIM/002053000005</td>
-                <td>23/03/2025</td>
-                <td>11433</td>
-                <td>{getTranslation('GMC')}</td>
-                <td>{getTranslation('MOI SULABIYA MAIN')}</td>
-                <td><span className="status-badge status-warranty"><i className="bi bi-shield"></i> {getTranslation('Warranty Initiated')}</span></td>
-                <td>
-                  <div className="action-buttons">
-                    <div className="action-button" title={getTranslation('View Details')}><i className="bi bi-eye"></i></div>
-                    <div className="action-button" title={getTranslation('Edit Record')}><i className="bi bi-pencil-square"></i></div>
-                    <div className="action-button" title={getTranslation('Print Report')}><i className="bi bi-printer"></i></div>
-                    <div className="action-button" title={getTranslation('Download PDF')}><i className="bi bi-file-pdf"></i></div>
-                    <div className="action-button" title={getTranslation('Share')}><i className="bi bi-share"></i></div>
-                    <div className="action-button" title={getTranslation('Delete')}><i className="bi bi-trash"></i></div>
-                  </div>
-                </td>
-              </tr>
-              <tr className="clickable" onClick={() => handleJobCardClick('KOJMIGIM/002053000002')}>
-                <td>4</td>
-                <td>KOJMIGIM/002053000002</td>
-                <td>20/03/2025</td>
-                <td>1216098</td>
-                <td>{getTranslation('TOYOTA')}</td>
-                <td>{getTranslation('MOI SULABIYA MAIN')}</td>
-                <td><span className="status-badge status-submitted"><i className="bi bi-send"></i> {getTranslation('JO Submitted')}</span></td>
-                <td>
-                  <div className="action-buttons">
-                    <div className="action-button" title={getTranslation('View Details')}><i className="bi bi-eye"></i></div>
-                    <div className="action-button" title={getTranslation('Edit Record')}><i className="bi bi-pencil-square"></i></div>
-                    <div className="action-button" title={getTranslation('Print Report')}><i className="bi bi-printer"></i></div>
-                    <div className="action-button" title={getTranslation('Download PDF')}><i className="bi bi-file-pdf"></i></div>
-                    <div className="action-button" title={getTranslation('Share')}><i className="bi bi-share"></i></div>
-                    <div className="action-button" title={getTranslation('Delete')}><i className="bi bi-trash"></i></div>
-                  </div>
-                </td>
-              </tr>
-              <tr className="clickable" onClick={() => handleJobCardClick('KOJMIGIM/002053000000')}>
-                <td>5</td>
-                <td>KOJMIGIM/002053000000</td>
-                <td>19/03/2025</td>
-                <td>071039</td>
-                <td>{getTranslation('KIA')}</td>
-                <td>{getTranslation('MOI AHMADI')}</td>
-                <td><span className="status-badge status-estimation"><i className="bi bi-calculator"></i> {getTranslation('Estimation Approved')}</span></td>
-                <td>
-                  <div className="action-buttons">
-                    <div className="action-button" title={getTranslation('View Details')}><i className="bi bi-eye"></i></div>
-                    <div className="action-button" title={getTranslation('Edit Record')}><i className="bi bi-pencil-square"></i></div>
-                    <div className="action-button" title={getTranslation('Print Report')}><i className="bi bi-printer"></i></div>
-                    <div className="action-button" title={getTranslation('Download PDF')}><i className="bi bi-file-pdf"></i></div>
-                    <div className="action-button" title={getTranslation('Share')}><i className="bi bi-share"></i></div>
-                    <div className="action-button" title={getTranslation('Delete')}><i className="bi bi-trash"></i></div>
-                  </div>
-                </td>
-              </tr>
+              {garageData.jobOrdersData.map((job, index) => (
+                <tr key={job.id} className="clickable" onClick={() => handleJobCardClick(job.joNumber)}>
+                  <td>{index + 1}</td>
+                  <td>{job.joNumber}</td>
+                  <td>{job.joDate}</td>
+                  <td>{job.technician}</td>
+                  <td>{getTranslation(job.vehicle)}</td>
+                  <td>{getTranslation(job.garage)}</td>
+                  <td>
+                    <span className={`status-badge status-${job.status.toLowerCase().replace(/\s+/g, '-')}`}>
+                      <i className={`bi ${
+                        job.status === 'Warranty Initiated' ? 'bi-shield' :
+                        job.status === 'JO Submitted' ? 'bi-send' :
+                        'bi-calculator'
+                      }`}></i> 
+                      {getTranslation(job.status)}
+                    </span>
+                  </td>
+                  <td>
+                    <div className="action-buttons">
+                      <div className="action-button" title={getTranslation('View Details')}><i className="bi bi-eye"></i></div>
+                      <div className="action-button" title={getTranslation('Edit Record')}><i className="bi bi-pencil-square"></i></div>
+                      <div className="action-button" title={getTranslation('Print Report')}><i className="bi bi-printer"></i></div>
+                      <div className="action-button" title={getTranslation('Download PDF')}><i className="bi bi-file-pdf"></i></div>
+                      <div className="action-button" title={getTranslation('Share')}><i className="bi bi-share"></i></div>
+                      <div className="action-button" title={getTranslation('Delete')}><i className="bi bi-trash"></i></div>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '15px', alignItems: 'center' }}>
-            <div>{getTranslation('Showing 1 to 5 of 16 entries')}</div>
+            <div>{getTranslation(`Showing 1 to ${garageData.jobOrdersData.length} of ${garageData.jobOrdersData.length} entries`)}</div>
             <div style={{ display: 'flex', gap: '5px' }}>
               <button className="table-button" title={getTranslation('Previous')}><i className="bi bi-chevron-left"></i></button>
               <button className="table-button" style={{ backgroundColor: 'var(--primary)', color: 'white' }}>1</button>
-              <button className="table-button">2</button>
-              <button className="table-button">3</button>
-              <button className="table-button">4</button>
               <button className="table-button" title={getTranslation('Next')}><i className="bi bi-chevron-right"></i></button>
             </div>
           </div>
@@ -594,6 +703,7 @@ const KPTCDashboard = () => {
             <JobCardCostProjection 
               jobCardId={selectedJobCard} 
               onClose={() => setSelectedJobCard(null)}
+              selectedGarage={selectedGarage}
             />
           </div>
         )}
@@ -622,19 +732,18 @@ const KPTCDashboard = () => {
         </div>
 
         {/* Job Flow */}
-        <div className="job-flow-container">
-          <div className="chart-header">
-            <h3 className="chart-title">
-              <i className="bi bi-arrow-left-right"></i> 
-              {getTranslation('Job Order Flow')} 
-              {selectedGarage && selectedGarage !== "all" && ` - ${garages.find(g => g.value === selectedGarage)?.label}`}
-            </h3>
-            <div className="chart-actions">
-              <button className="chart-action-button">
-                <i className="bi bi-three-dots"></i>
-              </button>
-            </div>
-          </div>
+        <div className="job-flow-wrapper">
+          <JobCardFlow selectedGarage={selectedGarage} />
+        </div>
+
+        {/* Key Performance Indicators */}
+        <div className="chart-grid-item">
+          <KeyPerformanceChart selectedGarage={selectedGarage} />
+        </div>
+
+        {/* Job Card Cost Projection */}
+        <div className="chart-grid-item">
+          <JobCardCostProjection selectedGarage={selectedGarage} />
         </div>
 
         {/* Footer */}

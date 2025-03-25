@@ -6,305 +6,196 @@ import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, BarElement, T
 // Register Chart.js components
 ChartJS.register(ArcElement, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const JobCardCostProjection = ({ jobCardId = 'KOJMIGIM/002053000005', onClose }) => {
+const JobCardCostProjection = ({ selectedGarage }) => {
   const { getTranslation } = useLanguage();
   const [activeTab, setActiveTab] = useState('breakdown');
 
-  // Sample job card data
-  const jobCardData = {
-    id: jobCardId,
-    vehicleMake: 'Toyota Land Cruiser',
-    technicianName: 'Ahmed Hassan',
-    dateCreated: '23/03/2025',
-    status: 'In Progress',
-    estimatedCompletion: '29/03/2025',
-    costs: {
-      laborCost: 420,
-      partsCost: 1650,
-      serviceCharges: 180,
-      taxAmount: 112.5,
-      totalCost: 2362.5,
-      originalEstimate: 2200,
-      variance: 162.5
-    },
-    breakdown: {
-      engine: 850,
-      transmission: 350,
-      electrical: 480,
-      brakes: 220,
-      bodywork: 350
-    },
-    timeline: ['20/03/2025', '22/03/2025', '24/03/2025', '26/03/2025', '28/03/2025', '30/03/2025'],
-    projectedCosts: [0, 850, 1200, 1650, 2100, 2362.5],
-    actualCosts: [0, 880, 1280, 1720, 0, 0]
-  };
-
-  // Cost breakdown doughnut chart data
-  const breakdownData = {
-    labels: [
-      getTranslation('Engine'),
-      getTranslation('Transmission'),
-      getTranslation('Electrical'),
-      getTranslation('Brakes'),
-      getTranslation('Body Work')
-    ],
-    datasets: [
-      {
-        data: Object.values(jobCardData.breakdown),
-        backgroundColor: [
-          '#4361ee',
-          '#3a0ca3',
-          '#7209b7',
-          '#f72585',
-          '#4cc9f0'
-        ],
-        borderColor: [
-          '#3a56d4',
-          '#2f0982',
-          '#5f0795',
-          '#d91a6d',
-          '#38b1d8'
-        ],
-        borderWidth: 1
-      }
-    ]
-  };
-
-  // Cost projection bar chart data
-  const projectionData = {
-    labels: jobCardData.timeline,
-    datasets: [
-      {
-        label: getTranslation('Projected Cost'),
-        data: jobCardData.projectedCosts,
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-      },
-      {
-        label: getTranslation('Actual Cost'),
-        data: jobCardData.actualCosts,
-        backgroundColor: 'rgba(255, 99, 132, 0.6)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1
-      }
-    ]
-  };
-
-  // Options for charts
-  const doughnutOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'right',
-        labels: {
-          boxWidth: 12,
-          padding: 15,
-          font: {
-            size: 12
-          }
+  // Sample data for different garages
+  const costData = {
+    all: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: getTranslation('Estimated Cost'),
+          data: [18500, 21000, 19800, 17650, 22300, 20100],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgb(54, 162, 235)',
+          borderWidth: 1
+        },
+        {
+          label: getTranslation('Actual Cost'),
+          data: [19200, 20400, 20100, 18200, 21800, 19500],
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderWidth: 1
         }
-      },
-      tooltip: {
-        callbacks: {
-          label: function(context) {
-            const label = context.label || '';
-            const value = context.raw || 0;
-            return `${label}: ${value.toLocaleString()} KWD (${Math.round((value / jobCardData.costs.totalCost) * 100)}%)`;
-          }
+      ]
+    },
+    sulaibiya: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: getTranslation('Estimated Cost'),
+          data: [8500, 9000, 8800, 7650, 9300, 8100],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgb(54, 162, 235)',
+          borderWidth: 1
+        },
+        {
+          label: getTranslation('Actual Cost'),
+          data: [8700, 8800, 9100, 7900, 9100, 8400],
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderWidth: 1
         }
-      }
+      ]
+    },
+    subhan: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: getTranslation('Estimated Cost'),
+          data: [5500, 6000, 5800, 5650, 6300, 6100],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgb(54, 162, 235)',
+          borderWidth: 1
+        },
+        {
+          label: getTranslation('Actual Cost'),
+          data: [5700, 5900, 6100, 5800, 6200, 6000],
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderWidth: 1
+        }
+      ]
+    },
+    ahmadi: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: getTranslation('Estimated Cost'),
+          data: [3500, 4000, 3800, 3650, 4300, 4100],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgb(54, 162, 235)',
+          borderWidth: 1
+        },
+        {
+          label: getTranslation('Actual Cost'),
+          data: [3800, 3900, 4000, 3700, 4500, 3900],
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderWidth: 1
+        }
+      ]
+    },
+    fintas: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: getTranslation('Estimated Cost'),
+          data: [2500, 2800, 2600, 2450, 2900, 2700],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgb(54, 162, 235)',
+          borderWidth: 1
+        },
+        {
+          label: getTranslation('Actual Cost'),
+          data: [2700, 2750, 2800, 2500, 3000, 2600],
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderWidth: 1
+        }
+      ]
+    },
+    mutla: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [
+        {
+          label: getTranslation('Estimated Cost'),
+          data: [1500, 1700, 1600, 1450, 1800, 1600],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgb(54, 162, 235)',
+          borderWidth: 1
+        },
+        {
+          label: getTranslation('Actual Cost'),
+          data: [1600, 1650, 1700, 1500, 1900, 1550],
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgb(255, 99, 132)',
+          borderWidth: 1
+        }
+      ]
     }
   };
+  
+  // Get appropriate cost data
+  const garageKey = selectedGarage && costData[selectedGarage] ? selectedGarage : 'all';
+  const chartData = costData[garageKey];
 
-  const barOptions = {
+  const options = {
     responsive: true,
     maintainAspectRatio: false,
-    scales: {
-      y: {
-        beginAtZero: true,
-        grid: {
-          color: 'rgba(0, 0, 0, 0.05)'
-        },
-        ticks: {
-          callback: function(value) {
-            return value + ' KWD';
-          },
-          font: {
-            size: 11
-          }
-        }
-      },
-      x: {
-        grid: {
-          display: false
-        },
-        ticks: {
-          font: {
-            size: 11
-          }
-        }
-      }
-    },
     plugins: {
       legend: {
         position: 'top',
-        align: 'end',
         labels: {
-          boxWidth: 12,
-          padding: 15,
-          font: {
-            size: 12
-          }
+          color: document.documentElement.getAttribute('data-theme') === 'dark' 
+            ? '#e2e8f0' 
+            : '#475569'
         }
       },
       tooltip: {
-        callbacks: {
-          label: function(context) {
-            const label = context.dataset.label || '';
-            const value = context.raw || 0;
-            return `${label}: ${value.toLocaleString()} KWD`;
+        mode: 'index',
+        intersect: false,
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: document.documentElement.getAttribute('data-theme') === 'dark' 
+            ? '#94a3b8' 
+            : '#64748b'
+        },
+        grid: {
+          color: document.documentElement.getAttribute('data-theme') === 'dark' 
+            ? 'rgba(148, 163, 184, 0.1)' 
+            : 'rgba(203, 213, 225, 0.5)'
+        }
+      },
+      y: {
+        ticks: {
+          color: document.documentElement.getAttribute('data-theme') === 'dark' 
+            ? '#94a3b8' 
+            : '#64748b',
+          callback: function(value) {
+            return 'KD ' + value;
           }
+        },
+        grid: {
+          color: document.documentElement.getAttribute('data-theme') === 'dark' 
+            ? 'rgba(148, 163, 184, 0.1)' 
+            : 'rgba(203, 213, 225, 0.5)'
         }
       }
     }
   };
 
   return (
-    <div className="chart-container">
+    <div className="job-cost-container">
       <div className="chart-header">
         <h3 className="chart-title">
-          <i className="bi bi-calculator"></i> {getTranslation('Job Card Cost Projection')} - {jobCardData.id}
+          <i className="bi bi-cash-stack"></i> 
+          {getTranslation('Job Card Cost Projection')}
+          {selectedGarage && selectedGarage !== "all" && ` - ${selectedGarage.charAt(0).toUpperCase() + selectedGarage.slice(1)}`}
         </h3>
         <div className="chart-actions">
-          <button className="chart-action-button" title={getTranslation('Download')}>
-            <i className="bi bi-download"></i>
-          </button>
-          <button className="chart-action-button" title={getTranslation('Refresh')}>
-            <i className="bi bi-arrow-clockwise"></i>
-          </button>
-          {onClose && (
-            <button className="chart-action-button" title={getTranslation('Close')} onClick={onClose}>
-              <i className="bi bi-x-lg"></i>
-            </button>
-          )}
-          <button className="chart-action-button" title={getTranslation('More')}>
-            <i className="bi bi-three-dots-vertical"></i>
+          <button className="chart-action-button">
+            <i className="bi bi-three-dots"></i>
           </button>
         </div>
       </div>
-      
-      <div className="job-card-details">
-        <div className="job-card-info">
-          <div className="info-item">
-            <span className="info-label"><i className="bi bi-car-front"></i> {getTranslation('Vehicle')}:</span>
-            <span className="info-value">{jobCardData.vehicleMake}</span>
-          </div>
-          <div className="info-item">
-            <span className="info-label"><i className="bi bi-person-gear"></i> {getTranslation('Technician')}:</span>
-            <span className="info-value">{jobCardData.technicianName}</span>
-          </div>
-          <div className="info-item">
-            <span className="info-label"><i className="bi bi-calendar-date"></i> {getTranslation('Created')}:</span>
-            <span className="info-value">{jobCardData.dateCreated}</span>
-          </div>
-          <div className="info-item">
-            <span className="info-label"><i className="bi bi-clock"></i> {getTranslation('Est. Completion')}:</span>
-            <span className="info-value">{jobCardData.estimatedCompletion}</span>
-          </div>
-          <div className="info-item">
-            <span className="info-label"><i className="bi bi-info-circle"></i> {getTranslation('Status')}:</span>
-            <span className={`status-badge ${jobCardData.status === 'In Progress' ? 'in-progress' : 'completed'}`}>
-              {getTranslation(jobCardData.status)}
-            </span>
-          </div>
-        </div>
-        
-        <div className="cost-summary">
-          <div className="cost-summary-item total">
-            <span className="cost-label">{getTranslation('Total Cost')}:</span>
-            <span className="cost-value">{jobCardData.costs.totalCost.toLocaleString()} <small>KWD</small></span>
-          </div>
-          <div className="cost-summary-item">
-            <span className="cost-label">{getTranslation('Original Estimate')}:</span>
-            <span className="cost-value">{jobCardData.costs.originalEstimate.toLocaleString()} <small>KWD</small></span>
-          </div>
-          <div className={`cost-summary-item ${jobCardData.costs.variance > 0 ? 'negative' : 'positive'}`}>
-            <span className="cost-label">{getTranslation('Variance')}:</span>
-            <span className="cost-value">
-              <i className={`bi ${jobCardData.costs.variance > 0 ? 'bi-arrow-up' : 'bi-arrow-down'}`}></i>
-              {Math.abs(jobCardData.costs.variance).toLocaleString()} <small>KWD</small>
-              <small>({Math.round((jobCardData.costs.variance / jobCardData.costs.originalEstimate) * 100)}%)</small>
-            </span>
-          </div>
-        </div>
-      </div>
-      
-      <div className="chart-tabs">
-        <button 
-          className={`chart-tab ${activeTab === 'breakdown' ? 'active' : ''}`}
-          onClick={() => setActiveTab('breakdown')}
-        >
-          <i className="bi bi-pie-chart-fill"></i> {getTranslation('Cost Breakdown')}
-        </button>
-        <button 
-          className={`chart-tab ${activeTab === 'projection' ? 'active' : ''}`}
-          onClick={() => setActiveTab('projection')}
-        >
-          <i className="bi bi-graph-up"></i> {getTranslation('Cost Projection')}
-        </button>
-      </div>
-      
-      <div className="chart-content" style={{ height: '350px', marginTop: '15px', marginBottom: '20px' }}>
-        {activeTab === 'breakdown' ? (
-          <Doughnut data={breakdownData} options={doughnutOptions} />
-        ) : (
-          <Bar data={projectionData} options={barOptions} />
-        )}
-      </div>
-      
-      <div className="cost-details">
-        <h4 className="cost-details-title">
-          <i className="bi bi-list-columns"></i> {getTranslation('Detailed Cost Breakdown')}
-        </h4>
-        <div className="cost-details-grid">
-          <div className="cost-detail-item">
-            <span className="cost-detail-label">{getTranslation('Labor Cost')}:</span>
-            <span className="cost-detail-value">
-              <strong>{jobCardData.costs.laborCost.toLocaleString()}</strong>
-              <span className="cost-unit">KWD</span>
-            </span>
-          </div>
-          <div className="cost-detail-item">
-            <span className="cost-detail-label">{getTranslation('Parts Cost')}:</span>
-            <span className="cost-detail-value">
-              <strong>{jobCardData.costs.partsCost.toLocaleString()}</strong>
-              <span className="cost-unit">KWD</span>
-            </span>
-          </div>
-          <div className="cost-detail-item">
-            <span className="cost-detail-label">{getTranslation('Service Charges')}:</span>
-            <span className="cost-detail-value">
-              <strong>{jobCardData.costs.serviceCharges.toLocaleString()}</strong>
-              <span className="cost-unit">KWD</span>
-            </span>
-          </div>
-          <div className="cost-detail-item">
-            <span className="cost-detail-label">{getTranslation('Tax Amount')}:</span>
-            <span className="cost-detail-value">
-              <strong>{jobCardData.costs.taxAmount.toLocaleString()}</strong>
-              <span className="cost-unit">KWD</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      
-      <div className="action-buttons">
-        <div className="print-report-button">
-          <img src="/assets/images/print-icon.svg" alt="Print" className="print-icon" />
-          <span>{getTranslation('Print Report')}</span>
-        </div>
+      <div className="job-cost-chart">
+        <Bar data={chartData} options={options} />
       </div>
     </div>
   );
