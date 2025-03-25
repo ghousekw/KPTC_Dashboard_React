@@ -40,23 +40,17 @@ Live demo available at: [https://dashboard.kptc.com](https://dashboard.kptc.com)
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/kptc/KPTC_Dashboard.git
-   cd KPTC_Dashboard
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Start the development server:
+2. Start the development server:
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to:
+3. Open your browser and navigate to:
    ```bash
    http://localhost:5173/
    ```
