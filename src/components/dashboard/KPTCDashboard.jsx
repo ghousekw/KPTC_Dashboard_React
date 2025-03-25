@@ -17,10 +17,13 @@ import ContractingPartyOverview from '../charts/ContractingPartyOverview.jsx';
 import JobCardCostProjection from '../charts/JobCardCostProjection.jsx';
 
 const KPTCDashboard = () => {
-  const { getTranslation, currentLang, toggleLanguage } = useLanguage();
+  const { getTranslation, currentLang, toggleLanguage, language } = useLanguage();
   const [sidebarActive, setSidebarActive] = useState(false);
   const [selectedJobCard, setSelectedJobCard] = useState(null);
   const [darkMode, setDarkMode] = useState(localStorage.getItem('darkMode') === 'true' || false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [selectedMenu, setSelectedMenu] = useState("dashboard");
+  const [showSubmenu, setShowSubmenu] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarActive(!sidebarActive);
@@ -83,6 +86,11 @@ const KPTCDashboard = () => {
       document.body.classList.remove('rtl-layout');
     }
   }, [currentLang]);
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', darkMode);
+    document.body.classList.toggle('rtl-layout', language === 'ar');
+  }, [darkMode, language]);
 
   return (
     <div className={`container ${currentLang === 'ar' ? 'rtl-layout' : ''}`}>
@@ -166,7 +174,7 @@ const KPTCDashboard = () => {
       </div>
       
       {/* Main Content */}
-      <div className="main-content">
+      <div className="main-content" style={{ width: '100%' }}>
         {/* Header */}
         <div className="header">
           <div className="header-left">
