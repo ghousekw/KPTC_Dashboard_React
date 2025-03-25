@@ -31,6 +31,17 @@
   .mobile-menu-btn {
     display: none !important;
   }
+  
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .sidebar-overlay {
+    display: none !important;
+  }
 }
 
 /* Only show mobile menu button on mobile */
