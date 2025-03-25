@@ -1,18 +1,20 @@
 :root {
-  --primary: #223b73;
-  --primary-light: #2c4b94;
-  --primary-dark: #1a2e5c;
-  --secondary: #e63946;
-  --light-bg: #f8f9fa;
-  --success: #28a745;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --info: #17a2b8;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 8px rgba(0,0,0,0.07);
-  --shadow-lg: 0 8px 16px rgba(0,0,0,0.08);
+  --primary: #2c4985;
+  --primary-light: #3a5a9e;
+  --primary-dark: #203766;
+  --secondary: #e74c56;
+  --light-bg: #f9fafb;
+  --success: #38b259;
+  --warning: #f0b429;
+  --danger: #e53e51;
+  --info: #38a3b8;
+  --light: #f9fafb;
+  --dark: #3c4149;
+  --text-main: #2d3748;
+  --text-secondary: #4a5568;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.03);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.05);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.06);
   --transition-fast: 0.2s;
   --transition-normal: 0.3s;
 }
@@ -39,9 +41,12 @@
 }
 
 body {
-  background-color: #f0f2f5;
-  color: #333;
-  line-height: 1.5;
+  background-color: #f5f7fa;
+  color: var(--text-main);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* RTL specific styles */
@@ -148,9 +153,9 @@ body.rtl-layout .user-profile .placeholder-img {
 .sidebar {
   background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary) 100%);
   color: white;
-  padding: 15px 0 30px;
+  padding: 18px 0 30px;
   height: 100%;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.08);
   z-index: 1000;
   position: sticky;
   top: 0;
@@ -238,13 +243,15 @@ body.rtl-layout .user-profile .placeholder-img {
 }
 
 .menu-item {
-  margin: 4px 12px;
-  padding: 12px 18px;
+  margin: 6px 15px;
+  padding: 13px 20px;
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all var(--transition-normal) ease-out;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
 }
 
 .menu-item:hover {
@@ -270,7 +277,12 @@ body.rtl-layout .user-profile .placeholder-img {
 }
 
 .menu-item span {
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.menu-item.active span {
+  font-weight: 600;
 }
 
 .submenu {
@@ -363,6 +375,7 @@ body.rtl-layout .user-profile .placeholder-img {
 .header-left h1 {
   font-size: 26px;
   font-weight: 600;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 
 .header-right {
@@ -478,22 +491,25 @@ body.rtl-layout .user-profile .placeholder-img {
 }
 
 .stat-card-title {
-  font-size: 16px;
-  color: #666;
+  font-size: 15px;
+  color: var(--text-secondary);
   font-weight: 500;
+  margin-bottom: 8px;
 }
 
 .stat-card-value {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 5px;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.05);
 }
 
 .stat-card-total {
   font-size: 14px;
-  color: #888;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
+  font-weight: 500;
 }
 
 .stat-card-total i {
@@ -551,6 +567,7 @@ body.rtl-layout .user-profile .placeholder-img {
   font-weight: 600;
   display: flex;
   align-items: center;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 
 .filter-title i {
@@ -569,11 +586,12 @@ body.rtl-layout .user-profile .placeholder-img {
 
 .filter-label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
+  font-weight: 500;
 }
 
 .filter-label i {
@@ -626,6 +644,7 @@ body.rtl-layout .user-profile .placeholder-img {
   align-items: center;
   justify-content: center;
   flex: 1;
+  text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2);
 }
 
 .filter-button i {
@@ -688,7 +707,7 @@ body.rtl-layout .user-profile .placeholder-img {
 .table-title {
   font-size: 16px;
   font-weight: 600;
-  color: var(--dark);
+  color: var(--text-main);
   margin: 0;
   display: flex;
   align-items: center;
@@ -755,12 +774,14 @@ table {
 th {
   position: sticky;
   top: 0;
-  background-color: rgba(34, 59, 115, 0.03);
+  background-color: rgba(44, 73, 133, 0.06);
   z-index: 10;
-  padding: 15px;
+  padding: 16px;
   font-weight: 600;
-  color: var(--primary);
-  border-bottom: 2px solid rgba(34, 59, 115, 0.1);
+  color: var(--text-main);
+  border-bottom: 2px solid rgba(44, 73, 133, 0.1);
+  font-size: 15px;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.05);
 }
 
 th i {
@@ -769,8 +790,10 @@ th i {
 }
 
 td {
-  padding: 14px 15px;
+  padding: 16px;
   vertical-align: middle;
+  color: var(--text-main);
+  font-weight: 500;
 }
 
 tr:last-child td {
@@ -823,11 +846,12 @@ tr.clickable:hover td:first-child::before {
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.3px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   display: inline-flex;
   align-items: center;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 
 .status-badge i {
@@ -1227,6 +1251,7 @@ tr.clickable:hover td:first-child::before {
   font-weight: 600;
   display: flex;
   align-items: center;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1);
 }
 
 .chart-title i {
@@ -1443,7 +1468,7 @@ tr.clickable:hover td:first-child::before {
   font-weight: 600;
   margin-bottom: 10px;
   text-align: center;
-  color: var(--primary);
+  color: var(--text-main);
 }
 
 .job-card-count {
@@ -1462,9 +1487,10 @@ tr.clickable:hover td:first-child::before {
 
 .job-card-description {
   font-size: 13px;
-  color: #666;
+  color: var(--text-secondary);
   text-align: center;
   margin-top: 8px;
+  font-weight: 500;
 }
 
 /* Detailed Stats */
@@ -1521,6 +1547,7 @@ tr.clickable:hover td:first-child::before {
   font-size: 28px;
   font-weight: 700;
   margin: 5px 0;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.05);
 }
 
 .detailed-stat-card-desc {
@@ -2005,7 +2032,7 @@ tr.clickable:hover td:first-child::before {
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .status-badge.pending {
@@ -2401,7 +2428,7 @@ tr.clickable:hover td:first-child::before {
 /* Dark mode specific styles */
 body.dark-mode {
   background-color: #111827;
-  color: var(--text-main);
+  color: #e2e8f0;
 }
 
 body.dark-mode .sidebar {
@@ -2433,20 +2460,20 @@ body.dark-mode .footer {
 
 body.dark-mode th {
   background-color: #2d3748;
-  color: #e4e7eb;
+  color: #e2e8f0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: #a0aec0;
+  color: #e2e8f0;
 }
 
 body.dark-mode .filter-input, 
 body.dark-mode .filter-select {
   background-color: #2d3748;
   border-color: rgba(255, 255, 255, 0.1);
-  color: #e4e7eb;
+  color: #e2e8f0;
 }
 
 body.dark-mode tr:nth-child(even) {
@@ -2458,7 +2485,7 @@ body.dark-mode tr:hover {
 }
 
 body.dark-mode .header-left h1 {
-  color: #e4e7eb;
+  color: #e2e8f0;
 }
 
 body.dark-mode .stat-card-value, 
@@ -2468,12 +2495,23 @@ body.dark-mode .chart-value {
   color: #e2e8f0;
 }
 
+body.dark-mode .stat-card-title,
+body.dark-mode .job-card-description,
+body.dark-mode .filter-label,
+body.dark-mode .chart-description {
+  color: #cbd5e0;
+}
+
+body.dark-mode .stat-card-total {
+  color: #cbd5e0;
+}
+
 body.dark-mode .chart-title {
-  color: #e4e7eb;
+  color: #e2e8f0;
 }
 
 body.dark-mode .footer {
-  color: #a0aec0;
+  color: #cbd5e0;
 }
 
 body.dark-mode .dark-mode-toggle {
@@ -2485,14 +2523,14 @@ body.dark-mode .dark-mode-toggle:hover {
 }
 
 body.dark-mode .dark-mode-toggle i {
-  color: #e4e7eb;
+  color: #e2e8f0;
 }
 
 body.dark-mode .filter-title,
 body.dark-mode .table-title,
 body.dark-mode .filter-label,
 body.dark-mode .table-actions button {
-  color: #e4e7eb;
+  color: #e2e8f0;
 }
 
 body.dark-mode .filter-button {
@@ -2502,12 +2540,12 @@ body.dark-mode .filter-button {
 
 body.dark-mode .filter-button.secondary {
   background-color: #374151;
-  color: #e4e7eb;
+  color: #e2e8f0;
 }
 
 body.dark-mode .process-step {
   background-color: #2d3748;
-  color: #e4e7eb;
+  color: #e2e8f0;
 }
 
 body.dark-mode .process-step.active {
@@ -2521,4 +2559,79 @@ body.dark-mode .language-selector {
 
 body.dark-mode .badge {
   background-color: #e74c56;
+}
+
+/* Improve user profile text */
+.user-profile span {
+  font-weight: 500;
+}
+
+/* Making small/secondary text more readable */
+.stat-card-total,
+.job-card-description,
+.filter-label,
+.kpi-status,
+.chart-description,
+.footer {
+  letter-spacing: 0.2px;
+}
+
+/* Additional dark mode text improvements */
+body.dark-mode .header-left h1,
+body.dark-mode .chart-title,
+body.dark-mode .filter-title,
+body.dark-mode .stat-card-title,
+body.dark-mode .table-title {
+  text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .stat-card-value,
+body.dark-mode th {
+  text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .menu-item {
+  text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .filter-button {
+  text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.25);
+}
+
+/* Improve dark mode status badges */
+body.dark-mode .status-badge {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+}
+
+body.dark-mode .status-badge.status-estimation {
+  background-color: rgba(0, 112, 209, 0.25);
+  color: #4dabf7;
+}
+
+body.dark-mode .status-badge.status-warranty {
+  background-color: rgba(235, 47, 150, 0.25);
+  color: #f783ac;
+}
+
+body.dark-mode .status-badge.status-submitted {
+  background-color: rgba(250, 173, 20, 0.25);
+  color: #ffd43b;
+}
+
+/* Increase visibility for key buttons in dark mode */
+body.dark-mode .action-button {
+  background-color: #2d3748;
+  color: #e2e8f0;
+}
+
+body.dark-mode .action-button:hover {
+  background-color: #4a5568;
+}
+
+/* Improve focus states for inputs in dark mode */
+body.dark-mode .filter-input:focus,
+body.dark-mode .filter-select:focus {
+  border-color: #4c6ef5;
+  box-shadow: 0 0 0 2px rgba(76, 110, 245, 0.25);
 } 
