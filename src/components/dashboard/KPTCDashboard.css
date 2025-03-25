@@ -2673,4 +2673,79 @@ body.dark-mode .filter-input::placeholder {
 body.dark-mode .language-selector span,
 body.dark-mode .user-profile span {
   color: #f1f5f9;
+}
+
+/* Improve dark mode text visibility for executive dashboard and contracting party sections */
+body.dark-mode .executive-chart-panel,
+body.dark-mode .priority-tasks,
+body.dark-mode .stats-card {
+  background-color: #1e293b;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .executive-chart-title,
+body.dark-mode .priority-tasks-title {
+  color: #f1f5f9;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .stats-card-title {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+body.dark-mode .stats-card-value {
+  color: #f8fafc;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .stats-card-change,
+body.dark-mode .stats-card-unit {
+  color: #cbd5e1;
+}
+
+body.dark-mode .stats-card-change.positive {
+  color: #4ade80;
+}
+
+body.dark-mode .stats-card-change.negative {
+  color: #f87171;
+}
+
+body.dark-mode .stats-card-icon {
+  background-color: rgba(96, 165, 250, 0.2);
+  color: #60a5fa;
+}
+
+body.dark-mode .priority-tasks-table th {
+  color: #e2e8f0;
+  background-color: #334155;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .priority-tasks-table td {
+  color: #cbd5e1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .status-badge.pending {
+  background-color: rgba(148, 163, 184, 0.3);
+  color: #cbd5e1;
+}
+
+body.dark-mode .status-badge.in-progress {
+  background-color: rgba(250, 204, 21, 0.3);
+  color: #fde047;
+}
+
+body.dark-mode .status-badge.completed {
+  background-color: rgba(74, 222, 128, 0.3);
+  color: #86efac;
+}
+
+body.dark-mode .status-badge.hold {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
 } 
