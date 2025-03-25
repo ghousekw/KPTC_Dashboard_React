@@ -173,7 +173,11 @@ const KPTCDashboard = () => {
   }, [darkMode, language]);
 
   // Get data for the selected garage
-  const garageData = useMemo(() => getGarageData(selectedGarage), [selectedGarage]);
+  const garageData = useMemo(() => {
+    // Handle the case where selectedGarage is undefined
+    const garageKey = selectedGarage || 'all';
+    return getGarageData(garageKey);
+  }, [selectedGarage]);
   
   // Calculate completion percentage
   const completionPercentage = Math.round((garageData.completedJobs / garageData.jobOrders) * 100);
@@ -313,7 +317,7 @@ const KPTCDashboard = () => {
           <div className="stat-card primary">
             <div className="stat-card-header">
               <div>
-                <div className="stat-card-title">{getTranslation('Total Job Orders')} {selectedGarage !== "all" && `- ${garages.find(g => g.value === selectedGarage)?.label}`}</div>
+                <div className="stat-card-title">{getTranslation('Total Job Orders')} {selectedGarage && selectedGarage !== "all" && `- ${garages.find(g => g.value === selectedGarage)?.label}`}</div>
                 <div className="stat-card-value">{garageData.jobOrders}</div>
                 <div className="stat-card-total"><i className="bi bi-arrow-up"></i> {getTranslation('12% Increase')}</div>
               </div>
@@ -623,7 +627,7 @@ const KPTCDashboard = () => {
             <h3 className="chart-title">
               <i className="bi bi-arrow-left-right"></i> 
               {getTranslation('Job Order Flow')} 
-              {selectedGarage !== "all" && ` - ${garages.find(g => g.value === selectedGarage)?.label}`}
+              {selectedGarage && selectedGarage !== "all" && ` - ${garages.find(g => g.value === selectedGarage)?.label}`}
             </h3>
             <div className="chart-actions">
               <button className="chart-action-button">

@@ -44,7 +44,8 @@ const ExecutiveChart = ({ selectedGarage }) => {
     };
 
     // Select appropriate data based on garage
-    const chartData = selectedGarage === 'all' ? allGaragesData : garageSpecificData[selectedGarage] || allGaragesData;
+    const garageKey = selectedGarage && garageSpecificData[selectedGarage] ? selectedGarage : 'all';
+    const chartData = garageKey === 'all' ? allGaragesData : garageSpecificData[garageKey];
 
     // Add income dataset
     data.datasets.push({
@@ -141,7 +142,7 @@ const ExecutiveChart = ({ selectedGarage }) => {
         <h3 className="chart-title">
           <i className="bi bi-graph-up"></i> 
           {getTranslation('Financial Performance')}
-          {selectedGarage !== 'all' && ` - ${selectedGarage.charAt(0).toUpperCase() + selectedGarage.slice(1)}`}
+          {selectedGarage && selectedGarage !== 'all' && ` - ${selectedGarage.charAt(0).toUpperCase() + selectedGarage.slice(1)}`}
         </h3>
         <div className="chart-actions">
           <button className="chart-action-button">

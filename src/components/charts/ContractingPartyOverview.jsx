@@ -348,9 +348,9 @@ const ContractingPartyOverview = ({ selectedGarage }) => {
     };
 
     // Select the appropriate data based on the selected garage
-    const sourceData = selectedGarage === 'all' ? 
-      allGaragesData : 
-      garageSpecificData[selectedGarage] || allGaragesData;
+    // Handle case where selectedGarage might be undefined
+    const garageKey = selectedGarage && garageSpecificData[selectedGarage] ? selectedGarage : 'all';
+    const sourceData = garageKey === 'all' ? allGaragesData : garageSpecificData[garageKey];
 
     return {
       labels: sourceData.labels,
@@ -415,7 +415,7 @@ const ContractingPartyOverview = ({ selectedGarage }) => {
         <h3 className="chart-title">
           <i className="bi bi-building"></i> 
           {getTranslation('Contracting Party Overview')}
-          {selectedGarage !== 'all' && ` - ${selectedGarage.charAt(0).toUpperCase() + selectedGarage.slice(1)}`}
+          {selectedGarage && selectedGarage !== 'all' && ` - ${selectedGarage.charAt(0).toUpperCase() + selectedGarage.slice(1)}`}
         </h3>
         <div className="chart-actions">
           <button className="chart-action-button" title={getTranslation('Download')}>
