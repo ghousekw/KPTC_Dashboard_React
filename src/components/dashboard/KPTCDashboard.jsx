@@ -70,16 +70,8 @@ const KPTCDashboard = () => {
   }, [currentLang]);
 
   return (
-    <div className="container">
-      {/* Mobile Menu Button */}
-      <button className="mobile-menu-btn" onClick={toggleSidebar}>
-        <i className="bi bi-list"></i>
-      </button>
-      
-      {/* Sidebar Overlay */}
-      <div className={`sidebar-overlay ${sidebarActive ? 'active' : ''}`} onClick={() => setSidebarActive(false)}></div>
-      
-      {/* Sidebar */}
+    <div className={`container ${currentLang === 'ar' ? 'rtl-layout' : ''}`}>
+      <div className="sidebar-overlay" onClick={toggleSidebar}></div>
       <div className={`sidebar ${sidebarActive ? 'active' : ''}`}>
         <div className="brand">
           <div className="logo-container">
@@ -148,8 +140,10 @@ const KPTCDashboard = () => {
         </div>
       </div>
       
-      {/* Main Content */}
-      <div className="main-content">
+      <div className="main-content" style={{ maxWidth: "1800px", margin: "0 auto", padding: "0 20px" }}>
+        <button className="mobile-menu-btn" onClick={toggleSidebar}>
+          <i className="bi bi-list"></i>
+        </button>
         {/* Header */}
         <div className="header">
           <div className="header-left">
@@ -182,63 +176,61 @@ const KPTCDashboard = () => {
         <div className="stats-container">
           <div className="stat-card primary">
             <div className="stat-card-header">
-              <h4 className="stat-card-title"><i className="bi bi-list-task"></i> {getTranslation('Job Order Total')}</h4>
+              <div className="stat-card-title">
+                {getTranslation('Job Order Total')}
+              </div>
               <div className="stat-card-icon">
-                <i className="bi bi-list-check"></i>
+                <i className="bi bi-list-ul"></i>
               </div>
             </div>
-            <h2 className="stat-card-value">136</h2>
-            <p className="stat-card-total">{getTranslation('All active job orders')} <i className="bi bi-arrow-up-right"></i></p>
+            <div className="stat-card-value">16</div>
+            <div className="stat-card-total">
+              <i className="bi bi-arrow-up-right"></i> {getTranslation('All active job orders')}
+            </div>
           </div>
           
           <div className="stat-card success">
             <div className="stat-card-header">
               <div className="stat-card-title">
-                <i className="bi bi-check2-circle"></i>
                 {getTranslation('Job Order Completed')}
               </div>
               <div className="stat-card-icon">
-                <i className="bi bi-check-circle"></i>
+                <i className="bi bi-check"></i>
               </div>
             </div>
             <div className="stat-card-value">0</div>
             <div className="stat-card-total">
-              <i className="bi bi-calendar-check"></i>
-              {getTranslation('Finished job orders')}
+              <i className="bi bi-calendar-check"></i> {getTranslation('Finished job orders')}
             </div>
           </div>
           
           <div className="stat-card warning">
             <div className="stat-card-header">
               <div className="stat-card-title">
-                <i className="bi bi-gear"></i>
                 {getTranslation('Job Order In Progress')}
               </div>
               <div className="stat-card-icon">
-                <i className="bi bi-gear"></i>
+                <i className="bi bi-gear-fill"></i>
               </div>
             </div>
             <div className="stat-card-value">16</div>
             <div className="stat-card-total">
-              <i className="bi bi-wrench"></i>
-              {getTranslation('Currently processing')}
+              <i className="bi bi-wrench"></i> {getTranslation('Currently processing')}
             </div>
           </div>
           
           <div className="stat-card danger">
             <div className="stat-card-header">
               <div className="stat-card-title">
-                <i className="bi bi-hourglass-split"></i>
                 {getTranslation('Job Order On Hold')}
               </div>
               <div className="stat-card-icon">
-                <i className="bi bi-hand"></i>
+                <i className="bi bi-hand-index-thumb"></i>
               </div>
             </div>
             <div className="stat-card-value">0</div>
             <div className="stat-card-total">
-              <i className="bi bi-clock"></i>
-              {getTranslation('Temporarily stopped')}
+              <i className="bi bi-clock"></i> {getTranslation('Temporarily stopped')}
             </div>
           </div>
         </div>
