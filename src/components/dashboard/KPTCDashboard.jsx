@@ -70,8 +70,16 @@ const KPTCDashboard = () => {
   }, [currentLang]);
 
   return (
-    <div className={`container ${currentLang === 'ar' ? 'rtl-layout' : ''}`}>
-      <div className="sidebar-overlay" onClick={toggleSidebar}></div>
+    <div className="container">
+      {/* Mobile Menu Button */}
+      <button className="mobile-menu-btn" onClick={toggleSidebar}>
+        <i className="bi bi-list"></i>
+      </button>
+      
+      {/* Sidebar Overlay */}
+      <div className={`sidebar-overlay ${sidebarActive ? 'active' : ''}`} onClick={() => setSidebarActive(false)}></div>
+      
+      {/* Sidebar */}
       <div className={`sidebar ${sidebarActive ? 'active' : ''}`}>
         <div className="brand">
           <div className="logo-container">
@@ -140,10 +148,8 @@ const KPTCDashboard = () => {
         </div>
       </div>
       
+      {/* Main Content */}
       <div className="main-content" style={{ maxWidth: "1800px", margin: "0 auto", padding: "0 20px" }}>
-        <button className="mobile-menu-btn" onClick={toggleSidebar}>
-          <i className="bi bi-list"></i>
-        </button>
         {/* Header */}
         <div className="header">
           <div className="header-left">
@@ -167,6 +173,9 @@ const KPTCDashboard = () => {
             </div>
           </div>
         </div>
+        
+        {/* Job Card Flow - Moved to top */}
+        <JobCardFlow />
         
         <ExecutiveSummaryChart />
 
@@ -438,8 +447,6 @@ const KPTCDashboard = () => {
         <DetailedStats />
 
         <QuickActions />
-
-        <JobCardFlow />
 
         <JobOrderTrendsChart />
 
