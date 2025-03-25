@@ -462,6 +462,140 @@ const translations = {
   'In Progress': {
     ar: 'قيد التنفيذ'
   },
+  // Add missing technician-related translations
+  'Running Job Cards by Technician': {
+    ar: 'بطاقات العمل الجارية حسب الفني'
+  },
+  'Active Jobs': {
+    ar: 'الوظائف النشطة'
+  },
+  'Mike (Engine)': {
+    ar: 'مايك (محرك)'
+  },
+  'Sara (Electrical)': {
+    ar: 'سارة (كهربائي)'
+  },
+  'Raj (Brakes)': {
+    ar: 'راج (فرامل)'
+  },
+  'Carlos (Transmission)': {
+    ar: 'كارلوس (ناقل الحركة)'
+  },
+  'Ahmed (Body Work)': {
+    ar: 'أحمد (أعمال الهيكل)'
+  },
+  // Add missing translations for staff names and currency
+  'Mike Ahmed': {
+    ar: 'مايك أحمد'
+  },
+  'Sara Khan': {
+    ar: 'سارة خان'
+  },
+  'Ahmed Ali': {
+    ar: 'أحمد علي'
+  },
+  'Carlos Diaz': {
+    ar: 'كارلوس دياز'
+  },
+  'KWD': {
+    ar: 'د.ك'
+  },
+  // Performance Indicators translations
+  'Key Performance Indicators': {
+    ar: 'مؤشرات الأداء الرئيسية'
+  },
+  'Avg. Turnaround Time': {
+    ar: 'متوسط وقت التنفيذ'
+  },
+  'Days': {
+    ar: 'أيام'
+  },
+  'Target: 3 Days': {
+    ar: 'الهدف: 3 أيام'
+  },
+  'First Time Fix Rate': {
+    ar: 'معدل الإصلاح من أول مرة'
+  },
+  'Target: 85%': {
+    ar: 'الهدف: 85٪'
+  },
+  'Customer Satisfaction': {
+    ar: 'رضا العملاء'
+  },
+  'Target: 90%': {
+    ar: 'الهدف: 90٪'
+  },
+  'Labor Utilization': {
+    ar: 'استغلال العمالة'
+  },
+  // Quick Actions translations
+  'Create New Job Order': {
+    ar: 'إنشاء أمر عمل جديد'
+  },
+  'Pending Approvals': {
+    ar: 'الموافقات المعلقة'
+  },
+  'Requires your attention': {
+    ar: 'تتطلب اهتمامك'
+  },
+  'View all pending approvals': {
+    ar: 'عرض جميع الموافقات المعلقة'
+  },
+  'Maintenance Alerts': {
+    ar: 'تنبيهات الصيانة'
+  },
+  'Critical maintenance needed': {
+    ar: 'الصيانة الحرجة المطلوبة'
+  },
+  'View maintenance details': {
+    ar: 'عرض تفاصيل الصيانة'
+  },
+  'Generate Reports': {
+    ar: 'إنشاء التقارير'
+  },
+  'Download Reports': {
+    ar: 'تنزيل التقارير'
+  },
+  // JobCardFlow translations
+  'Job Card Process Flow': {
+    ar: 'تدفق عملية بطاقة العمل'
+  },
+  'Reception': {
+    ar: 'استقبال'
+  },
+  'Initial assessment': {
+    ar: 'التقييم الأولي'
+  },
+  'Inspection': {
+    ar: 'الفحص'
+  },
+  'Detailed diagnosis': {
+    ar: 'التشخيص المفصل'
+  },
+  'Estimation': {
+    ar: 'التقدير'
+  },
+  'Cost approval': {
+    ar: 'الموافقة على التكلفة'
+  },
+  'Repair': {
+    ar: 'الإصلاح'
+  },
+  'Service execution': {
+    ar: 'تنفيذ الخدمة'
+  },
+  'Quality Check': {
+    ar: 'فحص الجودة'
+  },
+  'Final inspection': {
+    ar: 'الفحص النهائي'
+  },
+  'Delivery': {
+    ar: 'التسليم'
+  },
+  'Handover to client': {
+    ar: 'التسليم للعميل'
+  }
 };
 
 // Create the language context
