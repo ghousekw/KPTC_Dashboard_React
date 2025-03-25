@@ -188,7 +188,7 @@ body.rtl-layout .user-profile .placeholder-img {
 .brand .logo-container {
   position: relative;
   width: 100%;
-  height: 70px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,7 +203,7 @@ body.rtl-layout .user-profile .placeholder-img {
   max-width: 180px;
   height: auto;
   object-fit: contain;
-  max-height: 70px;
+  max-height: 50px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   transition: all 0.3s ease;
   position: relative;
@@ -228,12 +228,6 @@ body.rtl-layout .user-profile .placeholder-img {
   justify-content: center;
   z-index: 1;
   text-align: center;
-}
-
-.brand .svg-fallback svg {
-  height: 50px;
-  width: auto;
-  margin: 0 auto;
 }
 
 /* Hide SVG fallback when image loads successfully */
@@ -959,17 +953,11 @@ tr.clickable:hover td:first-child::before {
   height: 60px;
 }
 
-.fallback-logo-svg {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.fallback-logo-svg svg {
-  height: 50px;
-  width: auto;
+.fallback-logo span {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 26px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Placeholder class for replacing missing images */
@@ -2732,4 +2720,55 @@ body.dark-mode .language-selector:hover,
 body.dark-mode .user-profile:hover,
 body.dark-mode .dark-mode-toggle:hover {
   background-color: #475569;
+}
+
+/* Fix dark mode text visibility throughout the UI */
+body.dark-mode .job-flow-title {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+body.dark-mode .job-flow-description {
+  color: #cbd5e1;
+}
+
+body.dark-mode .job-flow-icon {
+  background-color: #334155;
+  color: #93c5fd;
+}
+
+body.dark-mode .stats-card-title,
+body.dark-mode .kpi-title,
+body.dark-mode .chart-title {
+  color: #e2e8f0;
+}
+
+body.dark-mode .stats-card-value,
+body.dark-mode .kpi-value,
+body.dark-mode .detailed-stat-card-value {
+  color: #f8fafc;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .job-card-title {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+body.dark-mode .job-card-description {
+  color: #cbd5e1;
+}
+
+body.dark-mode .job-card-icon {
+  background-color: #334155;
+  color: #93c5fd;
+}
+
+body.dark-mode .filter-input::placeholder {
+  color: #94a3b8;
+}
+
+body.dark-mode .language-selector span,
+body.dark-mode .user-profile span {
+  color: #f1f5f9;
 } 

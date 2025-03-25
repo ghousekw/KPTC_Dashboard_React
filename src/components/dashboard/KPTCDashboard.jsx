@@ -98,7 +98,6 @@ const KPTCDashboard = () => {
       <div className={`sidebar ${sidebarActive ? 'active' : ''}`}>
         <div className="brand">
           <div className="logo-container">
-            {/* Use SVG logo for better visibility */}
             <img 
               src="/assets/images/logo.svg" 
               alt="KPTC Logo" 
@@ -109,11 +108,7 @@ const KPTCDashboard = () => {
             />
             <div className="svg-fallback" style={{ display: 'none' }}>
               <div className="fallback-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#4f76c7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M12 8l4 4-4 4M8 12h8"></path>
-                </svg>
-                <span style={{ color: '#ffffff', marginLeft: '5px', fontWeight: 'bold' }}>KPTC</span>
+                <span>KPTC</span>
               </div>
             </div>
           </div>
