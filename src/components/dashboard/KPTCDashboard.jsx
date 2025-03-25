@@ -112,7 +112,6 @@ const KPTCDashboard = () => {
               </div>
             </div>
           </div>
-          <div className="logo-text">Kuwait Public Transport Company</div>
         </div>
         
         <div className="menu-item active">
@@ -167,7 +166,7 @@ const KPTCDashboard = () => {
       </div>
       
       {/* Main Content */}
-      <div className="main-content" style={{ maxWidth: "1800px", margin: "0 auto", padding: "0 20px" }}>
+      <div className="main-content">
         {/* Header */}
         <div className="header">
           <div className="header-left">
