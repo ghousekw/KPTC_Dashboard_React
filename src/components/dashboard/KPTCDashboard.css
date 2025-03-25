@@ -358,6 +358,7 @@ body.rtl-layout .user-profile .placeholder-img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 20px;
   margin-bottom: 25px;
   padding: 22px 25px;
   background-color: #ffffff;
