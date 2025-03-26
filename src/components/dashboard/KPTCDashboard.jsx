@@ -699,12 +699,37 @@ const KPTCDashboard = () => {
 
         {/* Show cost projection only when a job card is selected */}
         {selectedJobCard && (
-          <div id="cost-projection-section">
-            <JobCardCostProjection 
-              jobCardId={selectedJobCard} 
-              onClose={() => setSelectedJobCard(null)}
-              selectedGarage={selectedGarage}
-            />
+          <div id="cost-projection-section" style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center',
+            width: '100%',
+            margin: '20px auto',
+            padding: '0 20px'
+          }}>
+            <div style={{ 
+              maxWidth: '1200px', 
+              width: '100%',
+              backgroundColor: 'var(--card-bg)',
+              borderRadius: '8px',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+              padding: '20px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }}>
+              <JobCardCostProjection 
+                jobCardId={selectedJobCard} 
+                onClose={() => setSelectedJobCard(null)}
+                selectedGarage={selectedGarage}
+                style={{
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center'
+                }}
+              />
+            </div>
           </div>
         )}
 
@@ -713,37 +738,21 @@ const KPTCDashboard = () => {
           <WorkflowStatusChart />
         </div>
 
+        <DetailedStats />
         <InvoiceValuesChart />
 
         <TechnicianJobsChart />
 
-        <PerformanceIndicators />
-
-        <DetailedStats />
+        <PerformanceIndicators />        
 
         <QuickActions />
 
         <JobOrderTrendsChart />
 
-        {/* Charts */}
-        <div className="charts-grid">
-          <ExecutiveChart selectedGarage={selectedGarage} />
-          <ContractingPartyOverview selectedGarage={selectedGarage} />
-        </div>
-
-        {/* Job Flow */}
-        <div className="job-flow-wrapper">
-          <JobCardFlow selectedGarage={selectedGarage} />
-        </div>
 
         {/* Key Performance Indicators */}
         <div className="chart-grid-item">
           <KeyPerformanceChart selectedGarage={selectedGarage} />
-        </div>
-
-        {/* Job Card Cost Projection */}
-        <div className="chart-grid-item">
-          <JobCardCostProjection selectedGarage={selectedGarage} />
         </div>
 
         {/* Footer */}
