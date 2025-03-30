@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { 
   useHelp, 
   useHelpTestPageTranslations,
-  useHelpLanguage 
+  useHelpLanguage,
+  HelpContainer 
 } from './help';
 import './styles/HelpTestPage.css';
 
 const HelpTestPage = ({ onBack }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [activeHelpPage, setActiveHelpPage] = useState(null);
   
   // Simple search state
   const [searchQuery, setSearchQuery] = useState('');
@@ -17,6 +19,16 @@ const HelpTestPage = ({ onBack }) => {
   // Get context for translations and search
   const { searchHelpContent } = useHelpLanguage();
   const { language, toggleLanguage, isRTL, getTranslation } = useHelpTestPageTranslations();
+
+  // Handle help card click
+  const handleHelpCardClick = (pageId) => {
+    setActiveHelpPage(pageId);
+  };
+
+  // Handle help close
+  const handleHelpClose = () => {
+    setActiveHelpPage(null);
+  };
   
   // Hide tip when search results are showing
   useEffect(() => {
@@ -76,13 +88,13 @@ const HelpTestPage = ({ onBack }) => {
         const query = searchQuery.toLowerCase();
         
         if (query.includes('login')) {
-          // Direct navigation to login help
+          setActiveHelpPage('login');
           setSearchQuery('');
           return;
         }
         
         if (query.includes('dashboard')) {
-          // Direct navigation to dashboard help
+          setActiveHelpPage('dashboard');
           setSearchQuery('');
           return;
         }
@@ -118,6 +130,7 @@ const HelpTestPage = ({ onBack }) => {
   
   // Navigate to a help page from search results
   const navigateToResult = (page) => {
+    setActiveHelpPage(page);
     setSearchResults([]);
     setSearchQuery('');
   };
@@ -209,19 +222,34 @@ const HelpTestPage = ({ onBack }) => {
           <p>{getTranslation('Select a help topic to learn more about using the KPTC Dashboard.')}</p>
           
           <div className="help-cards-grid">
-            <div className="help-card">
+            <div 
+              className="help-card" 
+              onClick={() => handleHelpCardClick('login')}
+              role="button"
+              tabIndex={0}
+            >
               <div className="help-card-icon">🔐</div>
               <h3>{getTranslation('Login Help')}</h3>
               <p>{getTranslation('Learn how to access the system and authenticate')}</p>
             </div>
             
-            <div className="help-card">
+            <div 
+              className="help-card"
+              onClick={() => handleHelpCardClick('dashboard')}
+              role="button"
+              tabIndex={0}
+            >
               <div className="help-card-icon">📊</div>
               <h3>{getTranslation('Dashboard Help')}</h3>
               <p>{getTranslation('Understand the dashboard features and analytics')}</p>
             </div>
             
-            <div className="help-card">
+            <div 
+              className="help-card"
+              onClick={() => handleHelpCardClick('test')}
+              role="button"
+              tabIndex={0}
+            >
               <div className="help-card-icon">❓</div>
               <h3>{getTranslation('Test Not Found')}</h3>
               <p>{getTranslation('See what happens when help content is not available')}</p>
@@ -244,6 +272,14 @@ const HelpTestPage = ({ onBack }) => {
           </div>
         )}
       </div>
+
+      {/* Help Container Modal */}
+      {activeHelpPage && (
+        <HelpContainer
+          currentPage={activeHelpPage}
+          onClose={handleHelpClose}
+        />
+      )}
     </div>
   );
 };
