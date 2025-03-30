@@ -1,0 +1,107 @@
+/* Global help system styles */
+
+/* Prevent scrolling on body when help modal is open */
+body.help-modal-open {
+  overflow: hidden;
+}
+
+/* Help button styling */
+.help-button {
+  background-color: transparent;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: all 0.2s;
+}
+
+.help-button:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.help-button .help-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  color: white;
+  margin-left: 0.5rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.help-button:hover .help-icon {
+  background-color: white;
+  color: #3b82f6;
+}
+
+/* Help icon in header/toolbar */
+.help-toolbar-icon {
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 1.25rem;
+  transition: color 0.2s;
+}
+
+.help-toolbar-icon:hover {
+  color: #3b82f6;
+}
+
+/* Floating help button (for mobile) */
+.help-floating-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.2s, background-color 0.2s;
+  font-size: 1.5rem;
+}
+
+.help-floating-button:hover {
+  transform: scale(1.05);
+  background-color: #2563eb;
+}
+
+/* For screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* RTL support */
+[dir="rtl"] .help-button .help-icon {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .help-floating-button {
+  right: auto;
+  left: 1.5rem;
+} 

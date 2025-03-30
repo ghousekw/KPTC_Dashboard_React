@@ -1,0 +1,481 @@
+.help-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.help-modal-content {
+  width: 90%;
+  max-width: 1200px;
+  height: 85vh;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.help-header {
+  padding: 1rem 1.5rem;
+  background-color: #2563eb;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.header-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.help-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.help-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.help-close-btn,
+.help-print-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.help-print-btn {
+  font-size: 1.2rem;
+}
+
+.help-close-btn:hover,
+.help-print-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.help-body {
+  display: flex;
+  height: calc(100% - 60px);
+  overflow: hidden;
+}
+
+.help-sidebar {
+  width: 300px;
+  background-color: #f3f4f6;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.help-search {
+  padding: 1rem;
+  position: relative;
+}
+
+.help-search input {
+  width: 100%;
+  padding: 0.75rem 2rem 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background-color: white;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.help-search input:focus {
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.clear-search {
+  position: absolute;
+  right: 1.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.clear-search:hover {
+  color: #4b5563;
+  background-color: #f3f4f6;
+}
+
+.help-sidebar h3 {
+  margin: 0.5rem 0;
+  padding: 0 1rem;
+  font-size: 1.1rem;
+  color: #4b5563;
+}
+
+.help-topics-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.help-topics-list li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.help-topics-list li:hover {
+  background-color: #e5e7eb;
+}
+
+.help-topics-list li.active {
+  background-color: #dbeafe;
+  color: #2563eb;
+  font-weight: 500;
+  border-left-color: #2563eb;
+}
+
+.topic-name {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.topic-description {
+  font-size: 0.8rem;
+  color: #6b7280;
+  line-height: 1.3;
+}
+
+.no-results {
+  padding: 1rem;
+  color: #6b7280;
+  font-style: italic;
+  text-align: center;
+}
+
+.sidebar-footer {
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  font-size: 0.85rem;
+}
+
+.keyboard-shortcuts h4 {
+  margin: 0 0 0.5rem 0;
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+.shortcuts-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  color: #6b7280;
+}
+
+.shortcuts-list li {
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+.shortcuts-list strong {
+  background-color: #f3f4f6;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid #e5e7eb;
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  color: #4b5563;
+  display: inline-block;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+.help-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+.help-not-found {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  padding: 2rem;
+  text-align: center;
+}
+
+.help-not-found-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #9ca3af;
+}
+
+.help-not-found h2 {
+  margin: 0 0 0.5rem 0;
+  color: #4b5563;
+}
+
+.help-not-found p {
+  margin: 0 0 1.5rem 0;
+}
+
+.help-back-button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.help-back-button:hover {
+  background-color: #1d4ed8;
+}
+
+/* RTL Support for Arabic */
+[dir="rtl"] .help-sidebar {
+  border-right: none;
+  border-left: 1px solid #e5e7eb;
+}
+
+[dir="rtl"] .help-topics-list li {
+  border-left: none;
+  border-right: 3px solid transparent;
+}
+
+[dir="rtl"] .help-topics-list li.active {
+  border-right-color: #2563eb;
+}
+
+[dir="rtl"] .clear-search {
+  right: auto;
+  left: 1.75rem;
+}
+
+[dir="rtl"] .shortcuts-list strong {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Print styles */
+@media print {
+  .help-modal {
+    position: static;
+    display: block;
+    background-color: white;
+  }
+  
+  .help-modal-content {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  
+  .help-header,
+  .help-sidebar {
+    display: none;
+  }
+  
+  .help-body {
+    display: block;
+    height: auto;
+  }
+  
+  .help-content {
+    overflow: visible;
+    padding: 0;
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .help-modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 0;
+  }
+
+  .help-body {
+    flex-direction: column;
+  }
+
+  .help-sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 40%;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .help-topics-list {
+    max-height: calc(100vh * 0.25);
+  }
+  
+  .help-topics-list li {
+    padding: 0.5rem 1rem;
+  }
+
+  .topic-description {
+    display: none;
+  }
+  
+  .sidebar-footer {
+    display: none;
+  }
+}
+
+/* Media Viewer Styles */
+.media-container {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  max-width: 100%;
+  background-color: #f9fafb;
+}
+
+.help-media {
+  max-width: 100%;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.media-caption {
+  padding: 0.75rem;
+  background-color: #f3f4f6;
+  font-size: 0.9rem;
+  color: #4b5563;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.media-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
+}
+
+.media-expanded {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.media-expanded img,
+.media-expanded video {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+}
+
+.close-media-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.close-media-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* RTL Support for media viewer */
+[dir="rtl"] .close-media-btn {
+  right: auto;
+  left: 0.5rem;
+}
+
+/* Mobile styles for media viewer */
+@media (max-width: 768px) {
+  .media-expanded {
+    max-width: 95%;
+  }
+  
+  .media-expanded img,
+  .media-expanded video {
+    max-height: 70vh;
+  }
+} 

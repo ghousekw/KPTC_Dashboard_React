@@ -1,0 +1,81 @@
+:root {
+  --primary: #223b73;
+  --primary-light: #2c4b94;
+  --primary-dark: #1a2e5c;
+  --secondary: #e63946;
+  --light-bg: #f8f9fa;
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --info: #17a2b8;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.07);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.08);
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* RTL specific styles */
+body.rtl-layout {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Tahoma', sans-serif;
+}
+
+body.rtl-layout .menu-item i {
+  margin-right: 0;
+  margin-left: 12px;
+}
+
+body.rtl-layout .menu-item span {
+  font-family: 'Tahoma', sans-serif;
+}
+
+body.rtl-layout .header-left h1 {
+  font-family: 'Tahoma', sans-serif;
+}
+
+body.rtl-layout .stat-card-title,
+body.rtl-layout .filter-title,
+body.rtl-layout .table-title,
+body.rtl-layout .chart-title,
+body.rtl-layout .footer {
+  font-family: 'Tahoma', sans-serif;
+}
+
+/* Fix alignment for RTL */
+body.rtl-layout .stat-card-header,
+body.rtl-layout .filter-title,
+body.rtl-layout .table-header,
+body.rtl-layout .chart-header,
+body.rtl-layout .header-right {
+  flex-direction: row-reverse;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+} 
