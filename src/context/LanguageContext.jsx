@@ -115,9 +115,6 @@ const translations = {
   'JO Date': {
     ar: 'تاريخ أمر العمل'
   },
-  'Technician': {
-    ar: 'الفني'
-  },
   'JO Status': {
     ar: 'حالة أمر العمل'
   },
@@ -259,9 +256,6 @@ const translations = {
   'Received Payments': {
     ar: 'المدفوعات المستلمة'
   },
-  'Total Work Orders': {
-    ar: 'إجمالي أوامر العمل'
-  },
   'Contract Completion': {
     ar: 'إكمال العقد'
   },
@@ -322,9 +316,6 @@ const translations = {
   },
   'Expenses': {
     ar: 'المصروفات'
-  },
-  'Total Job Orders': {
-    ar: 'إجمالي أوامر العمل'
   },
   'Average Completion Time': {
     ar: 'متوسط وقت الإنجاز'
@@ -393,9 +384,6 @@ const translations = {
   'Vehicle': {
     ar: 'المركبة'
   },
-  'Technician': {
-    ar: 'الفني'
-  },
   'Created': {
     ar: 'تاريخ الإنشاء'
   },
@@ -435,9 +423,6 @@ const translations = {
   'View Full Estimate': {
     ar: 'عرض التقدير الكامل'
   },
-  'Print Report': {
-    ar: 'طباعة التقرير'
-  },
   'Engine': {
     ar: 'المحرك'
   },
@@ -458,9 +443,6 @@ const translations = {
   },
   'Actual Cost': {
     ar: 'التكلفة الفعلية'
-  },
-  'In Progress': {
-    ar: 'قيد التنفيذ'
   },
   // Add missing technician-related translations
   'Running Job Cards by Technician': {
@@ -519,9 +501,6 @@ const translations = {
   'Target: 85%': {
     ar: 'الهدف: 85٪'
   },
-  'Customer Satisfaction': {
-    ar: 'رضا العملاء'
-  },
   'Target: 90%': {
     ar: 'الهدف: 90٪'
   },
@@ -531,9 +510,6 @@ const translations = {
   // Quick Actions translations
   'Create New Job Order': {
     ar: 'إنشاء أمر عمل جديد'
-  },
-  'Pending Approvals': {
-    ar: 'الموافقات المعلقة'
   },
   'Requires your attention': {
     ar: 'تتطلب اهتمامك'
@@ -704,22 +680,48 @@ const translations = {
     ar: 'تصفية'
   },
   // Garage selector
-  "All Garages": "جميع الكراجات",
-  "Garage": "كراج",
-  "Select Garage": "اختر الكراج",
-  "Completed Jobs": "المهام المكتملة",
-  "Pending Jobs": "المهام المعلقة",
-  "Total Vehicles": "إجمالي المركبات",
-  "In Service": "في الخدمة",
-  "Completion Rate": "معدل الإنجاز",
-  "Awaiting Completion": "بانتظار الإكمال",
-  "Monthly Income": "الدخل الشهري",
-  "Weekly Income": "الدخل الأسبوعي",
-  "Monthly Expenses": "المصروفات الشهرية",
-  "Based on completed job orders": "بناءً على أوامر العمل المكتملة",
-  "Last 7 days": "آخر 7 أيام",
-  "Parts and maintenance costs": "تكاليف القطع والصيانة",
-  "Total Job Orders": "إجمالي أوامر العمل",
+  'All Garages': {
+    ar: 'جميع الكراجات'
+  },
+  'Select Garage': {
+    ar: 'اختر الكراج'
+  },
+  'Completed Jobs': {
+    ar: 'المهام المكتملة'
+  },
+  'Pending Jobs': {
+    ar: 'المهام المعلقة'
+  },
+  'Total Vehicles': {
+    ar: 'إجمالي المركبات'
+  },
+  'In Service': {
+    ar: 'في الخدمة'
+  },
+  'Completion Rate': {
+    ar: 'معدل الإنجاز'
+  },
+  'Awaiting Completion': {
+    ar: 'بانتظار الإكمال'
+  },
+  'Monthly Income': {
+    ar: 'الدخل الشهري'
+  },
+  'Weekly Income': {
+    ar: 'الدخل الأسبوعي'
+  },
+  'Monthly Expenses': {
+    ar: 'المصروفات الشهرية'
+  },
+  'Based on completed job orders': {
+    ar: 'بناءً على أوامر العمل المكتملة'
+  },
+  'Last 7 days': {
+    ar: 'آخر 7 أيام'
+  },
+  'Parts and maintenance costs': {
+    ar: 'تكاليف القطع والصيانة'
+  }
 };
 
 // Create the language context
