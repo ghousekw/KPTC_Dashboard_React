@@ -2,147 +2,6 @@ import { createContext, useState, useContext, useEffect } from 'react';
 
 // Expanded translations based on provided template
 const translations = {
-  // Help System - Login Page
-  'Login Page Help': {
-    ar: 'مساعدة صفحة تسجيل الدخول'
-  },
-  'Getting Started': {
-    ar: 'البدء'
-  },
-  'Welcome to the KPTC Dashboard login page. This guide will walk you through each step of the login process.': {
-    ar: 'مرحبًا بك في صفحة تسجيل الدخول إلى لوحة معلومات KPTC. سيرشدك هذا الدليل خلال كل خطوة من عملية تسجيل الدخول.'
-  },
-  'The KPTC Dashboard login screen': {
-    ar: 'شاشة تسجيل الدخول إلى لوحة معلومات KPTC'
-  },
-  'Login Process Overview': {
-    ar: 'نظرة عامة على عملية تسجيل الدخول'
-  },
-  'Enter Username': {
-    ar: 'أدخل اسم المستخدم'
-  },
-  'Enter Password': {
-    ar: 'أدخل كلمة المرور'
-  },
-  'Click Login': {
-    ar: 'انقر على تسجيل الدخول'
-  },
-  'Access Dashboard': {
-    ar: 'الوصول إلى لوحة المعلومات'
-  },
-  'Step-by-Step Login Guide': {
-    ar: 'دليل تسجيل الدخول خطوة بخطوة'
-  },
-  'Step 1': {
-    ar: 'الخطوة 1'
-  },
-  'Step 2': {
-    ar: 'الخطوة 2'
-  },
-  'Step 3': {
-    ar: 'الخطوة 3'
-  },
-  'Step 4': {
-    ar: 'الخطوة 4'
-  },
-  'Enter Your Username': {
-    ar: 'أدخل اسم المستخدم الخاص بك'
-  },
-  'Find the "User Name" field at the top of the login form.': {
-    ar: 'ابحث عن حقل "اسم المستخدم" في أعلى نموذج تسجيل الدخول.'
-  },
-  'Look for the first input field labeled "User Name"': {
-    ar: 'ابحث عن حقل الإدخال الأول المسمى "اسم المستخدم"'
-  },
-  'Click inside the field to activate it': {
-    ar: 'انقر داخل الحقل لتنشيطه'
-  },
-  'Type your assigned username': {
-    ar: 'اكتب اسم المستخدم المخصص لك'
-  },
-  'Your username is typically assigned by your system administrator and is case-sensitive.': {
-    ar: 'عادة ما يتم تعيين اسم المستخدم الخاص بك من قبل مسؤول النظام وهو حساس لحالة الأحرف.'
-  },
-  'Enter Your Password': {
-    ar: 'أدخل كلمة المرور الخاصة بك'
-  },
-  'Next, enter your password in the password field.': {
-    ar: 'بعد ذلك، أدخل كلمة المرور الخاصة بك في حقل كلمة المرور.'
-  },
-  'Click in the password field (located below the username field)': {
-    ar: 'انقر في حقل كلمة المرور (الموجود أسفل حقل اسم المستخدم)'
-  },
-  'Type your password': {
-    ar: 'اكتب كلمة المرور الخاصة بك'
-  },
-  'Show/Hide Password: If you need to verify what you\'ve typed, click the eye icon at the right side of the password field to show your password': {
-    ar: 'إظهار/إخفاء كلمة المرور: إذا كنت بحاجة إلى التحقق مما كتبته، انقر على رمز العين في الجانب الأيمن من حقل كلمة المرور لإظهار كلمة المرور الخاصة بك'
-  },
-  'How to show/hide your password using the visibility toggle': {
-    ar: 'كيفية إظهار/إخفاء كلمة المرور باستخدام زر الرؤية'
-  },
-  'Your password is hidden for security purposes. Make sure no one can see your screen while entering your password.': {
-    ar: 'يتم إخفاء كلمة المرور الخاصة بك لأغراض أمنية. تأكد من عدم وجود أحد يمكنه رؤية شاشتك أثناء إدخال كلمة المرور الخاصة بك.'
-  },
-  'Click the Login Button': {
-    ar: 'انقر على زر تسجيل الدخول'
-  },
-  'After entering your credentials, click the "Login" button to access the system.': {
-    ar: 'بعد إدخال بيانات الاعتماد الخاصة بك، انقر على زر "تسجيل الدخول" للوصول إلى النظام.'
-  },
-  'Verify that you\'ve entered both your username and password correctly': {
-    ar: 'تحقق من إدخال اسم المستخدم وكلمة المرور بشكل صحيح'
-  },
-  'Click the blue "Login" button located below the password field': {
-    ar: 'انقر على زر "تسجيل الدخول" الأزرق الموجود أسفل حقل كلمة المرور'
-  },
-  'Wait for the system to authenticate your credentials': {
-    ar: 'انتظر حتى يتحقق النظام من بيانات الاعتماد الخاصة بك'
-  },
-  'The authentication process usually takes a few seconds. Please be patient.': {
-    ar: 'عادة ما تستغرق عملية المصادقة بضع ثوانٍ. يرجى التحلي بالصبر.'
-  },
-  'Access the Dashboard': {
-    ar: 'الوصول إلى لوحة المعلومات'
-  },
-  'After successful authentication, you\'ll be redirected to the KPTC Dashboard.': {
-    ar: 'بعد المصادقة الناجحة، ستتم إعادة توجيهك إلى لوحة معلومات KPTC.'
-  },
-  'Verify that you can see the dashboard with various statistics and menu items': {
-    ar: 'تحقق من أنه يمكنك رؤية لوحة المعلومات مع إحصائيات وعناصر قائمة مختلفة'
-  },
-  'Check the top-right corner to confirm you\'re logged in with your username': {
-    ar: 'تحقق من الزاوية اليمنى العليا للتأكد من أنك قمت بتسجيل الدخول باسم المستخدم الخاص بك'
-  },
-  'Begin using the system!': {
-    ar: 'ابدأ باستخدام النظام!'
-  },
-  // Help System - General
-  'Dashboard Help': {
-    ar: 'مساعدة لوحة المعلومات'
-  },
-  'Login Help': {
-    ar: 'مساعدة تسجيل الدخول'
-  },
-  'Open Help': {
-    ar: 'فتح المساعدة'
-  },
-  'Close Help': {
-    ar: 'إغلاق المساعدة'
-  },
-  'Keyboard Shortcuts': {
-    ar: 'اختصارات لوحة المفاتيح'
-  },
-  'You are on a mobile device. The help interface will adjust for smaller screens.': {
-    ar: 'أنت تستخدم جهازًا محمولًا. سيتم ضبط واجهة المساعدة لشاشة أصغر.'
-  },
-  'Help System Test': {
-    ar: 'اختبار نظام المساعدة'
-  },
-  'Click the buttons below to view different help sections:': {
-    ar: 'انقر على الأزرار أدناه لعرض أقسام المساعدة المختلفة:'
-  },
-
   // Menu items
   'Dashboard & Reports': {
     ar: 'لوحة المعلومات والتقارير'
@@ -534,7 +393,7 @@ const translations = {
   'Vehicle': {
     ar: 'المركبة'
   },
-  'Technician_JobCard': {
+  'Technician': {
     ar: 'الفني'
   },
   'Created': {
@@ -576,7 +435,7 @@ const translations = {
   'View Full Estimate': {
     ar: 'عرض التقدير الكامل'
   },
-  'Print_Report_JobCard': {
+  'Print Report': {
     ar: 'طباعة التقرير'
   },
   'Engine': {
@@ -600,7 +459,7 @@ const translations = {
   'Actual Cost': {
     ar: 'التكلفة الفعلية'
   },
-  'In_Progress_JobCard': {
+  'In Progress': {
     ar: 'قيد التنفيذ'
   },
   // Add missing technician-related translations
@@ -660,7 +519,7 @@ const translations = {
   'Target: 85%': {
     ar: 'الهدف: 85٪'
   },
-  'Customer_Satisfaction_KPI': {
+  'Customer Satisfaction': {
     ar: 'رضا العملاء'
   },
   'Target: 90%': {
@@ -673,7 +532,7 @@ const translations = {
   'Create New Job Order': {
     ar: 'إنشاء أمر عمل جديد'
   },
-  'Pending_Approvals_QuickActions': {
+  'Pending Approvals': {
     ar: 'الموافقات المعلقة'
   },
   'Requires your attention': {
@@ -846,7 +705,7 @@ const translations = {
   },
   // Garage selector
   "All Garages": "جميع الكراجات",
-  "Garage_Selector": "كراج",
+  "Garage": "كراج",
   "Select Garage": "اختر الكراج",
   "Completed Jobs": "المهام المكتملة",
   "Pending Jobs": "المهام المعلقة",
@@ -860,7 +719,7 @@ const translations = {
   "Based on completed job orders": "بناءً على أوامر العمل المكتملة",
   "Last 7 days": "آخر 7 أيام",
   "Parts and maintenance costs": "تكاليف القطع والصيانة",
-  "Total_Job_Orders_Summary": "إجمالي أوامر العمل",
+  "Total Job Orders": "إجمالي أوامر العمل",
 };
 
 // Create the language context
@@ -883,11 +742,8 @@ export const LanguageProvider = ({ children }) => {
 
   // Get translation function
   const getTranslation = (key) => {
-    // Only add translation if the key exists and has a translation for current language
-    if (translations[key] && translations[key][currentLang]) {
-      return translations[key][currentLang];
-    }
-    return key; // Return the key itself as fallback if no translation found
+    if (currentLang === 'en') return key;
+    return translations[key]?.ar || key;
   };
 
   // Set document direction based on language
@@ -904,7 +760,7 @@ export const LanguageProvider = ({ children }) => {
   }, [currentLang]);
 
   return (
-    <LanguageContext.Provider value={{ currentLang, toggleLanguage, getTranslation, language: currentLang, setLanguage: (lang) => setCurrentLang(lang) }}>
+    <LanguageContext.Provider value={{ currentLang, toggleLanguage, getTranslation }}>
       {children}
     </LanguageContext.Provider>
   );
