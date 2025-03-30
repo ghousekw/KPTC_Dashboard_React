@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { LoginHelp, DashboardHelp, MediaViewer } from './index';
+import LoginHelp from './login/LoginHelp';
+import DashboardHelp from './dashboard/DashboardHelp';
+import MOIJobCardHelp from './moi/MOIJobCardHelp';
 import { useHelpLanguage } from './context/HelpLanguageContext';
 import './HelpContainer.css';
 
@@ -22,6 +24,12 @@ const HelpContainer = ({ currentPage, onClose }) => {
       label: getTranslation('Dashboard'), 
       description: getTranslation('Overview and main dashboard features'),
       keywords: ['dashboard', 'overview', 'statistics', 'charts', 'job orders', 'filter', 'table', 'actions', 'لوحة المعلومات', 'نظرة عامة', 'إحصائيات', 'الرسوم البيانية', 'طلبات العمل', 'تصفية', 'جدول', 'إجراءات']
+    },
+    {
+      id: 'moiJobCard',
+      label: getTranslation('MOI Job Card Help'),
+      description: getTranslation('Learn how to manage MOI job cards'),
+      keywords: ['moi', 'job card', 'vehicle', 'maintenance', 'service']
     },
     // Add more pages as you create more help components
   ], [language, getTranslation]); // Only recreate when language changes
@@ -57,7 +65,8 @@ const HelpContainer = ({ currentPage, onClose }) => {
         return <LoginHelp />;
       case 'dashboard':
         return <DashboardHelp />;
-      // Add more cases as you create more help components
+      case 'moiJobCard':
+        return <MOIJobCardHelp />;
       default:
         return (
           <div className="help-not-found">

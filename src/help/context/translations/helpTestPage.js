@@ -87,6 +87,12 @@ const helpTestPageTranslations = {
   },
   'No results found. Try different keywords.': {
     ar: 'لم يتم العثور على نتائج. جرب كلمات مختلفة.'
+  },
+  'MOI Job Card Help': {
+    ar: 'مساعدة بطاقة عمل وزارة الداخلية'
+  },
+  'Learn how to manage MOI vehicle maintenance requests': {
+    ar: 'تعلم كيفية إدارة طلبات صيانة مركبات وزارة الداخلية'
   }
 };
 

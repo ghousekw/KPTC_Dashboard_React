@@ -98,6 +98,12 @@ const HelpTestPage = ({ onBack }) => {
           setSearchQuery('');
           return;
         }
+
+        if (query.includes('moi') || query.includes('jobcard') || query.includes('job card')) {
+          setActiveHelpPage('moiJobCard');
+          setSearchQuery('');
+          return;
+        }
       }
       
       // Normal search
@@ -176,7 +182,7 @@ const HelpTestPage = ({ onBack }) => {
             {showTip && searchResults.length === 0 && (
               <div className="search-tip">
                 <p>{getTranslation('Pro tip: Try searching with:')}</p>
-                <code>@LoginHelp.jsx</code> {getTranslation('or')} <code>@DashboardHelp.jsx</code>
+                <code>@LoginHelp.jsx</code> {getTranslation('or')} <code>@DashboardHelp.jsx</code> {getTranslation('or')} <code>@MOIJobCardHelp.jsx</code>
               </div>
             )}
             
@@ -242,6 +248,17 @@ const HelpTestPage = ({ onBack }) => {
               <div className="help-card-icon">📊</div>
               <h3>{getTranslation('Dashboard Help')}</h3>
               <p>{getTranslation('Understand the dashboard features and analytics')}</p>
+            </div>
+            
+            <div 
+              className="help-card"
+              onClick={() => handleHelpCardClick('moiJobCard')}
+              role="button"
+              tabIndex={0}
+            >
+              <div className="help-card-icon">🚗</div>
+              <h3>{getTranslation('MOI Job Card Help')}</h3>
+              <p>{getTranslation('Learn how to manage MOI vehicle maintenance requests')}</p>
             </div>
             
             <div 

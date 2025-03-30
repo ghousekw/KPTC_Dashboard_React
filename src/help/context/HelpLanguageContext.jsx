@@ -7,6 +7,7 @@ import dashboardHelpTranslations from './translations/dashboardHelp';
 import helpContainerTranslations from './translations/helpContainer';
 import helpTestPageTranslations from './translations/helpTestPage';
 import mediaViewerTranslations from './translations/mediaViewer';
+import moiHelpTranslations from './translations/moiHelp';
 
 // Create the context
 const HelpLanguageContext = createContext();
@@ -36,7 +37,8 @@ export const HelpLanguageProvider = ({ children }) => {
       ...dashboardHelpTranslations,
       ...helpContainerTranslations, 
       ...helpTestPageTranslations,
-      ...mediaViewerTranslations
+      ...mediaViewerTranslations,
+      ...moiHelpTranslations
     };
     
     return translations[key]?.ar || key;
@@ -51,6 +53,7 @@ export const HelpLanguageProvider = ({ children }) => {
       case 'helpContainer': return helpContainerTranslations;
       case 'helpTestPage': return helpTestPageTranslations;
       case 'mediaViewer': return mediaViewerTranslations;
+      case 'moiHelp': return moiHelpTranslations;
       default: return {};
     }
   };
@@ -71,7 +74,7 @@ export const HelpLanguageProvider = ({ children }) => {
     const moduleToPage = {
       'loginHelp': 'login',
       'dashboardHelp': 'dashboard',
-      // Add more mappings as you add more help pages
+      'moiHelp': 'moiJobCard'
     };
     
     // Helper function to add a unique result
@@ -119,79 +122,39 @@ export const HelpLanguageProvider = ({ children }) => {
     // Search function for each module
     const searchModule = (module, moduleName) => {
       const page = moduleToPage[moduleName];
-      if (!page) return;
-      
-      // Collect all matches for this module
       const moduleMatches = [];
       
-      // Special case - check for exact module name in the query
-      // Only match exact module name references, not partial ones
-      if ((searchQuery === moduleName.toLowerCase()) || 
-          (moduleName === 'loginHelp' && searchQuery === 'login') ||
-          (moduleName === 'dashboardHelp' && searchQuery === 'dashboard')) {
-        moduleMatches.push({
-          id: `${page}-exact-match`,
-          page,
-          title: getTranslationForSearch(page, moduleName),
-          content: moduleName === 'loginHelp' 
-            ? 'Authentication and login process guide' 
-            : 'Dashboard features and analytics',
-          match: null, // Hide the "module reference" text
-          relevance: 5 // High priority for module name matches
-        });
-      }
-      
-      // Search in translation keys (collect the best matches)
-      const searchableKeys = Object.keys(module).filter(key => 
-        // Only include meaningful keys (longer than 3 chars)
-        key.length > 3 && 
-        // Filter out very generic keys
-        !['the', 'and', 'for', 'with'].includes(key.toLowerCase())
-      );
-      
-      searchableKeys.forEach((key, index) => {
+      // Search through all translations in this module
+      Object.entries(module).forEach(([key, value]) => {
+        // Check English text
         if (key.toLowerCase().includes(searchQuery)) {
           moduleMatches.push({
-            id: `${page}-key-${index}`,
+            id: `${page}-${key}`,
             page,
             title: getTranslationForSearch(page, moduleName),
             content: key,
-            match: null, // Hide the "found match" text
-            relevance: key.toLowerCase() === searchQuery ? 4 : 2 // Higher for exact match
+            match: key,
+            relevance: 2 // Match in English
           });
         }
-      });
-      
-      // Search in Arabic translations
-      Object.entries(module).forEach(([key, value], index) => {
+        
+        // Check Arabic text
         if (value.ar && value.ar.toLowerCase().includes(searchQuery)) {
           moduleMatches.push({
-            id: `${page}-ar-${index}`,
+            id: `${page}-ar-${key}`,
             page,
             title: getTranslationForSearch(page, moduleName),
             content: value.ar,
-            match: null, // Hide the match text
-            relevance: 1 // Match in translation
+            match: value.ar,
+            relevance: 2 // Match in Arabic
           });
         }
       });
       
       // Add the best match for this module
       if (moduleMatches.length > 0) {
-        // Sort by relevance
         moduleMatches.sort((a, b) => b.relevance - a.relevance);
-        // Add the best match
         addUniqueResult(moduleMatches[0]);
-      } else if (searchQuery === 'login' && moduleName === 'loginHelp') {
-        // Special case - always show Login Help for "login" query
-        addUniqueResult({
-          id: `${page}-default-match`,
-          page,
-          title: getTranslationForSearch(page, moduleName),
-          content: 'Login authentication and access instructions',
-          match: null,
-          relevance: 3
-        });
       }
     };
     
@@ -200,6 +163,7 @@ export const HelpLanguageProvider = ({ children }) => {
       switch (page) {
         case 'login': return getTranslation('Login Help', moduleName);
         case 'dashboard': return getTranslation('Dashboard Help', moduleName);
+        case 'moiJobCard': return getTranslation('MOI Job Card Help', moduleName);
         default: return page.charAt(0).toUpperCase() + page.slice(1) + ' Help';
       }
     };
@@ -207,7 +171,7 @@ export const HelpLanguageProvider = ({ children }) => {
     // Search in all modules
     searchModule(loginHelpTranslations, 'loginHelp');
     searchModule(dashboardHelpTranslations, 'dashboardHelp');
-    // Add more modules as needed
+    searchModule(moiHelpTranslations, 'moiHelp');
     
     // If no results but we have a general query, provide helpful options
     if (results.length === 0) {
@@ -230,6 +194,19 @@ export const HelpLanguageProvider = ({ children }) => {
           page: 'dashboard',
           title: 'Dashboard Help',
           content: 'Dashboard analytics and visualization',
+          match: null,
+          relevance: 3
+        });
+      }
+
+      if (searchQuery.includes('moi') || searchQuery.includes('job') || 
+          searchQuery.includes('card') || searchQuery.includes('vehicle') ||
+          searchQuery.includes('service')) {
+        addUniqueResult({
+          id: 'fallback-moi',
+          page: 'moiJobCard',
+          title: 'MOI Job Card Help',
+          content: 'Vehicle maintenance and job card management',
           match: null,
           relevance: 3
         });
@@ -317,6 +294,15 @@ export const useMediaViewerTranslations = () => {
   return {
     ...context,
     getTranslation: (key) => context.getTranslation(key, 'mediaViewer')
+  };
+};
+
+export const useMoiHelpTranslations = () => {
+  const context = useHelpLanguage();
+  
+  return {
+    ...context,
+    getTranslation: (key) => context.getTranslation(key, 'moiHelp')
   };
 };
 
