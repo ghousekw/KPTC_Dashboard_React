@@ -101,13 +101,7 @@ const MediaViewer = ({ src, type, caption, alt }) => {
                 onError={handleLoadError}
                 onLoad={handleLoadSuccess}
                 loading="lazy"
-                sandbox="allow-same-origin allow-scripts allow-popups allow-presentation"
               ></iframe>
-            </div>
-            <div className="direct-link">
-              <a href={watchUrl} target="_blank" rel="noopener noreferrer">
-                Watch on YouTube
-              </a>
             </div>
           </div>
         );
