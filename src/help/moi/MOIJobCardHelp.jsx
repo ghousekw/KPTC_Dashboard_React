@@ -1,6 +1,7 @@
 import React from 'react';
 import { MediaViewer } from '../index';
 import { useMoiHelpTranslations } from '../context/HelpLanguageContext';
+import { getVideoUrl } from '../config/videoUrls';
 import './MOIJobCardHelp.css';
 
 // Import MOI Job Card assets
@@ -12,13 +13,13 @@ const createJobCardScreenshot = {
   en: '/assets/help/moi/en/create_job_card.png',
   ar: '/assets/help/moi/ar/create_job_card.png'
 };
-const createJobCardVideo = {
-  en: '/assets/help/moi/en/create_job_card.mp4',
-  ar: '/assets/help/moi/ar/create_job_card.mp4'
-};
 
 const MOIJobCardHelp = () => {
-  const { getTranslation, isRTL } = useMoiHelpTranslations();
+  // Get component-specific translations and language
+  const { language, getTranslation, isRTL } = useMoiHelpTranslations();
+  
+  // Get the appropriate video URL based on environment and language
+  const createJobCardVideo = getVideoUrl('moi', 'createJobCard', language);
   
   return (
     <div className={`help-container ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
@@ -62,97 +63,98 @@ const MOIJobCardHelp = () => {
       {/* Creating New Job Card Section */}
       <div className="help-section">
         <h2>{getTranslation('Creating New Job Card')}</h2>
-        <p>{getTranslation('Follow these steps to create a new MOI job card:')}</p>
-        
-        <div className="service-types-container">
-          <div className="service-type-item">
-            <h3>{getTranslation('Main Service')}</h3>
-            <div className="service-type-description">
-              <p>{getTranslation('Used for normal repairs and maintenance work that may require extended service time.')}</p>
-              <ul>
-                <li>{getTranslation('Regular vehicle maintenance')}</li>
-                <li>{getTranslation('Complex repairs')}</li>
-                <li>{getTranslation('Multiple service items')}</li>
-                <li>{getTranslation('Standard processing time')}</li>
-              </ul>
-            </div>
-          </div>
+        <div className="help-content">
+          <p>{getTranslation('Follow these steps to create a new job card:')}</p>
           
-          <div className="service-type-item highlight">
-            <h3>{getTranslation('Quick Service')}</h3>
-            <div className="service-type-description">
-              <p>{getTranslation('Designed for rapid service when the customer is waiting in reception. Ideal for repairs that can be completed within 1 hour.')}</p>
-              <ul>
-                <li>{getTranslation('Oil changes')}</li>
-                <li>{getTranslation('Minor repairs')}</li>
-                <li>{getTranslation('Quick maintenance tasks')}</li>
-                <li>{getTranslation('1-hour service target')}</li>
-              </ul>
-              <div className="quick-service-note">
-                <span className="note-icon">⚡</span>
-                <p>{getTranslation('Quick Service automatically sets the Customer Waiting status for priority handling')}</p>
+          <MediaViewer 
+            src={createJobCardVideo}
+            type="video"
+            caption={getTranslation('How to create a new job card')}
+          />
+          
+          <div className="service-types-container">
+            <div className="service-type-item">
+              <h3>{getTranslation('Main Service')}</h3>
+              <div className="service-type-description">
+                <p>{getTranslation('Used for normal repairs and maintenance work that may require extended service time.')}</p>
+                <ul>
+                  <li>{getTranslation('Regular vehicle maintenance')}</li>
+                  <li>{getTranslation('Complex repairs')}</li>
+                  <li>{getTranslation('Multiple service items')}</li>
+                  <li>{getTranslation('Standard processing time')}</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="service-type-item highlight">
+              <h3>{getTranslation('Quick Service')}</h3>
+              <div className="service-type-description">
+                <p>{getTranslation('Designed for rapid service when the customer is waiting in reception. Ideal for repairs that can be completed within 1 hour.')}</p>
+                <ul>
+                  <li>{getTranslation('Oil changes')}</li>
+                  <li>{getTranslation('Minor repairs')}</li>
+                  <li>{getTranslation('Quick maintenance tasks')}</li>
+                  <li>{getTranslation('1-hour service target')}</li>
+                </ul>
+                <div className="quick-service-note">
+                  <span className="note-icon">⚡</span>
+                  <p>{getTranslation('Quick Service automatically sets the Customer Waiting status for priority handling')}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <MediaViewer 
-          src={isRTL ? createJobCardScreenshot.ar : createJobCardScreenshot.en}
-          type="image"
-          caption={getTranslation('The MOI Job Card creation interface')}
-          alt={getTranslation('Screenshot of the MOI Job Card creation form showing all required fields')}
-          className="create-job-card-screenshot"
-        />
-        
-        <MediaViewer 
-          src={isRTL ? createJobCardVideo.ar : createJobCardVideo.en}
-          type="video"
-          caption={getTranslation('Step-by-step guide to creating a new job card')}
-          alt={getTranslation('Video demonstration of creating a new MOI job card')}
-        />
-        
-        <div className="steps-container">
-          <div className="help-step">
-            <div className="step-header">
-              <div className="step-badge">{getTranslation('Step 1')}</div>
-              <h3>{getTranslation('Click New')}</h3>
-            </div>
-            <p>{getTranslation('Click the blue "New" button at the top of the Job Card page')}</p>
-          </div>
           
-          <div className="help-step">
-            <div className="step-header">
-              <div className="step-badge">{getTranslation('Step 2')}</div>
-              <h3>{getTranslation('Enter Basic Information')}</h3>
-            </div>
-            <ul>
-              <li>{getTranslation('Select date range (From Date - To Date)')}</li>
-              <li>{getTranslation('Job Card No. will be auto-generated')}</li>
-              <li>{getTranslation('Select Plate No. from the dropdown')}</li>
-              <li>{getTranslation('Vehicle Make will auto-populate based on Plate No.')}</li>
-            </ul>
-          </div>
+          <MediaViewer 
+            src={isRTL ? createJobCardScreenshot.ar : createJobCardScreenshot.en}
+            type="image"
+            caption={getTranslation('The MOI Job Card creation interface')}
+            alt={getTranslation('Screenshot of the MOI Job Card creation form showing all required fields')}
+            className="create-job-card-screenshot"
+          />
           
-          <div className="help-step">
-            <div className="step-header">
-              <div className="step-badge">{getTranslation('Step 3')}</div>
-              <h3>{getTranslation('Assign Details')}</h3>
+          <div className="steps-container">
+            <div className="help-step">
+              <div className="step-header">
+                <div className="step-badge">{getTranslation('Step 1')}</div>
+                <h3>{getTranslation('Click New')}</h3>
+              </div>
+              <p>{getTranslation('Click the blue "New" button at the top of the Job Card page')}</p>
             </div>
-            <ul>
-              <li>{getTranslation('Select Garage location')}</li>
-              <li>{getTranslation('Choose Service Type (Main Service or Quick Service)')}</li>
-              <li>{getTranslation('For Quick Service: Customer Waiting will be automatically set')}</li>
-              <li>{getTranslation('For Main Service: Indicate if Customer is Waiting')}</li>
-              <li>{getTranslation('Select User if applicable')}</li>
-            </ul>
-          </div>
-          
-          <div className="help-step">
-            <div className="step-header">
-              <div className="step-badge">{getTranslation('Step 4')}</div>
-              <h3>{getTranslation('Submit')}</h3>
+            
+            <div className="help-step">
+              <div className="step-header">
+                <div className="step-badge">{getTranslation('Step 2')}</div>
+                <h3>{getTranslation('Enter Basic Information')}</h3>
+              </div>
+              <ul>
+                <li>{getTranslation('Select date range (From Date - To Date)')}</li>
+                <li>{getTranslation('Job Card No. will be auto-generated')}</li>
+                <li>{getTranslation('Select Plate No. from the dropdown')}</li>
+                <li>{getTranslation('Vehicle Make will auto-populate based on Plate No.')}</li>
+              </ul>
             </div>
-            <p>{getTranslation('Click the "Proceed" button to create the job card')}</p>
+            
+            <div className="help-step">
+              <div className="step-header">
+                <div className="step-badge">{getTranslation('Step 3')}</div>
+                <h3>{getTranslation('Assign Details')}</h3>
+              </div>
+              <ul>
+                <li>{getTranslation('Select Garage location')}</li>
+                <li>{getTranslation('Choose Service Type (Main Service or Quick Service)')}</li>
+                <li>{getTranslation('For Quick Service: Customer Waiting will be automatically set')}</li>
+                <li>{getTranslation('For Main Service: Indicate if Customer is Waiting')}</li>
+                <li>{getTranslation('Select User if applicable')}</li>
+              </ul>
+            </div>
+            
+            <div className="help-step">
+              <div className="step-header">
+                <div className="step-badge">{getTranslation('Step 4')}</div>
+                <h3>{getTranslation('Submit')}</h3>
+              </div>
+              <p>{getTranslation('Click the "Proceed" button to create the job card')}</p>
+            </div>
           </div>
         </div>
       </div>

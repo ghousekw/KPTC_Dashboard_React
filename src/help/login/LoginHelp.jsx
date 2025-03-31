@@ -1,14 +1,17 @@
 import React from 'react';
 import { MediaViewer, useLoginHelpTranslations } from '../index';
+import { getVideoUrl } from '../config/videoUrls';
 import './LoginHelp.css';
 
 // Import login screen assets - these paths should be updated to your actual assets
 const loginScreenshot = '/assets/help/login_screen.png';
-const passwordVisibilityVideo = '/assets/help/password_visibility.mp4';
 
 const LoginHelp = () => {
   // Get component-specific translations
   const { language, getTranslation, isRTL } = useLoginHelpTranslations();
+  
+  // Get the appropriate video URL based on environment
+  const passwordVisibilityVideo = getVideoUrl('login', 'passwordVisibility');
   
   return (
     <div className={`help-container ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
