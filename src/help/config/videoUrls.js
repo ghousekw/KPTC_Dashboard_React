@@ -22,12 +22,11 @@ export const helpVideos = {
 
 // Helper function to get the appropriate video URL based on environment and language
 export const getVideoUrl = (section, video, language = 'en') => {
-  // In production, always return YouTube URLs
+  // In production, always return YouTube URLs for help documentation
   if (import.meta.env.PROD) {
     return typeof helpVideos[section][video].production === 'object'
       ? helpVideos[section][video].production[language]
       : helpVideos[section][video].production;
-      console.log('Video URL in production:', getVideoUrl('login', 'passwordVisibility'));
   }
 
   // In development, use local files

@@ -26,16 +26,39 @@ const MediaViewer = ({ src, type = 'image', caption, alt }) => {
 
   const renderMedia = () => {
     if (type === 'video') {
-      return (
-        <video 
-          controls
-          onLoadedData={handleLoad}
-          className={isLoading ? 'loading' : ''}
-        >
-          <source src={src} type="video/mp4" />
-          {getTranslation('Your browser does not support the video tag.')}
-        </video>
-      );
+      if (src.includes('youtube.com') || src.includes('youtu.be')) {
+        // Handle YouTube URLs with iframe
+        const videoId = src.includes('watch?v=') 
+          ? src.split('watch?v=')[1].split('&')[0]
+          : src.includes('/embed/')
+            ? src.split('/embed/')[1].split('?')[0]
+            : src.includes('youtu.be/')
+              ? src.split('youtu.be/')[1].split('?')[0]
+              : null;
+              
+        return (
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            onLoad={handleLoad}
+            className={isLoading ? 'loading' : ''}
+          />
+        );
+      } else {
+        // Handle local MP4 files
+        return (
+          <video 
+            controls
+            onLoadedData={handleLoad}
+            className={isLoading ? 'loading' : ''}
+          >
+            <source src={src} type="video/mp4" />
+            {getTranslation('Your browser does not support the video tag.')}
+          </video>
+        );
+      }
     } else {
       // Default to image
       return (
@@ -79,4 +102,4 @@ const MediaViewer = ({ src, type = 'image', caption, alt }) => {
   );
 };
 
-export default MediaViewer; 
+export default MediaViewer;
