@@ -3,6 +3,7 @@ import LoginHelp from './login/LoginHelp';
 import DashboardHelp from './dashboard/DashboardHelp';
 import MOIJobCardHelp from './moi/MOIJobCardHelp';
 import QCInspectorHelp from './qcinspector/QCInspectorHelp';
+import QCTechnicianHelp from './qctechnician/QCTechnicianHelp';
 import { useHelpLanguage } from './context/HelpLanguageContext';
 import './HelpContainer.css';
 
@@ -37,6 +38,12 @@ const HelpContainer = ({ currentPage, onClose }) => {
       label: getTranslation('QC Inspector Assignment Help'),
       description: getTranslation('Learn how to assign quality control inspectors'),
       keywords: ['qc', 'inspector', 'assign', 'quality control', 'job card', 'inspection']
+    },
+    {
+      id: 'qcTechnician',
+      label: getTranslation('QC Technician Assignment Help'),
+      description: getTranslation('Learn how to assign quality control technicians'),
+      keywords: ['qc', 'technician', 'assign', 'quality control', 'job card', 'maintenance']
     },
     // Add more pages as you create more help components
   ], [language, getTranslation]); // Only recreate when language changes
@@ -76,6 +83,8 @@ const HelpContainer = ({ currentPage, onClose }) => {
         return <MOIJobCardHelp />;
       case 'qcInspector':
         return <QCInspectorHelp />;
+      case 'qcTechnician':
+        return <QCTechnicianHelp />;
       default:
         return (
           <div className="help-not-found">

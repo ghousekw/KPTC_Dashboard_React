@@ -29,6 +29,18 @@ export const helpVideos = {
         ar: 'https://www.youtube.com/embed/V0qOSHiDSkM'
       }
     }
+  },
+  qcTechnician: {
+    assignTechnician: {
+      development: {
+        en: '/assets/help/qctechnician/en/assign_technician.mp4',
+        ar: '/assets/help/qctechnician/ar/assign_technician.mp4'
+      },
+      production: {
+        en: 'https://www.youtube.com/embed/Hpt8ucbmjwE',
+        ar: 'https://www.youtube.com/embed/yo2jAvaU2kw'
+      }
+    }
   }
 };
 

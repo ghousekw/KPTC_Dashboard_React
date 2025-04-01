@@ -9,6 +9,7 @@ import helpTestPageTranslations from './translations/helpTestPage';
 import mediaViewerTranslations from './translations/mediaViewer';
 import moiHelpTranslations from './translations/moiHelp';
 import qcInspectorHelpTranslations from './translations/qcInspectorHelp';
+import qcTechnicianHelpTranslations from './translations/qcTechnicianHelp';
 
 // Create the context
 const HelpLanguageContext = createContext();
@@ -40,7 +41,8 @@ export const HelpLanguageProvider = ({ children }) => {
       ...helpTestPageTranslations,
       ...mediaViewerTranslations,
       ...moiHelpTranslations,
-      ...qcInspectorHelpTranslations
+      ...qcInspectorHelpTranslations,
+      ...qcTechnicianHelpTranslations
     };
     
     return translations[key]?.ar || key;
@@ -57,6 +59,7 @@ export const HelpLanguageProvider = ({ children }) => {
       case 'mediaViewer': return mediaViewerTranslations;
       case 'moiHelp': return moiHelpTranslations;
       case 'qcInspectorHelp': return qcInspectorHelpTranslations;
+      case 'qcTechnicianHelp': return qcTechnicianHelpTranslations;
       default: return {};
     }
   };
@@ -78,7 +81,8 @@ export const HelpLanguageProvider = ({ children }) => {
       'loginHelp': 'login',
       'dashboardHelp': 'dashboard',
       'moiHelp': 'moiJobCard',
-      'qcInspectorHelp': 'qcInspector'
+      'qcInspectorHelp': 'qcInspector',
+      'qcTechnicianHelp': 'qcTechnician'
     };
     
     // Helper function to add a unique result
@@ -139,6 +143,17 @@ export const HelpLanguageProvider = ({ children }) => {
         });
       }
       
+      if (normalizedQuery.includes('qctechnician') || normalizedQuery === 'qctechnicianhelp') {
+        addUniqueResult({
+          id: 'direct-qctechnician',
+          page: 'qcTechnician',
+          title: 'QC Technician Assignment Help',
+          content: 'QC Technician assignment guide',
+          match: 'Direct component reference: QCTechnicianHelp',
+          relevance: 10 // Highest priority for direct component references
+        });
+      }
+      
       // If we found direct matches, return them immediately
       if (results.length > 0) {
         return results;
@@ -191,6 +206,7 @@ export const HelpLanguageProvider = ({ children }) => {
         case 'dashboard': return getTranslation('Dashboard Help', moduleName);
         case 'moiJobCard': return getTranslation('MOI Job Card Help', moduleName);
         case 'qcInspector': return getTranslation('QC Inspector Assignment Help', moduleName);
+        case 'qcTechnician': return getTranslation('QC Technician Assignment Help', moduleName);
         default: return page.charAt(0).toUpperCase() + page.slice(1) + ' Help';
       }
     };
@@ -200,6 +216,7 @@ export const HelpLanguageProvider = ({ children }) => {
     searchModule(dashboardHelpTranslations, 'dashboardHelp');
     searchModule(moiHelpTranslations, 'moiHelp');
     searchModule(qcInspectorHelpTranslations, 'qcInspectorHelp');
+    searchModule(qcTechnicianHelpTranslations, 'qcTechnicianHelp');
     
     // If no results but we have a general query, provide helpful options
     if (results.length === 0) {
@@ -252,6 +269,32 @@ export const HelpLanguageProvider = ({ children }) => {
           relevance: 3
         });
       }
+
+      if (searchQuery.includes('technician') || searchQuery.includes('assign technician') || 
+          searchQuery.includes('maintenance') || searchQuery.includes('mechanic')) {
+        addUniqueResult({
+          id: 'fallback-qctechnician',
+          page: 'qcTechnician',
+          title: 'QC Technician Assignment Help',
+          content: 'Quality Control Technician assignment and management',
+          match: null,
+          relevance: 3
+        });
+      }
+    }
+    
+    // Add additional high-relevance direct matches for component names
+    if (query.toLowerCase().includes('qc') || 
+        query.toLowerCase().includes('technician') || 
+        query.toLowerCase().includes('assign technician')) {
+      results.push({
+        id: 'qctechnician-direct-match',
+        page: 'qcTechnician',
+        title: getTranslation('QC Technician Assignment Help'),
+        content: getTranslation('Learn how to assign quality control technicians'),
+        match: 'Direct component reference',
+        relevance: 100
+      });
     }
     
     // Sort by relevance
@@ -353,6 +396,15 @@ export const useQCInspectorHelpTranslations = () => {
   return {
     ...context,
     getTranslation: (key) => context.getTranslation(key, 'qcInspectorHelp')
+  };
+};
+
+export const useQCTechnicianHelpTranslations = () => {
+  const context = useHelpLanguage();
+  
+  return {
+    ...context,
+    getTranslation: (key) => context.getTranslation(key, 'qcTechnicianHelp')
   };
 };
 

@@ -184,7 +184,15 @@ const qcInspectorHelpTranslations = {
   },
   'If the assignment fails to save, check that all required fields are completed correctly and try again': {
     ar: 'إذا فشل حفظ التعيين، تحقق من إكمال جميع الحقول المطلوبة بشكل صحيح وحاول مرة أخرى'
-  }
+  },
+  // Card descriptions
+  'Learn how to assign quality control technicians': {
+    ar: 'تعلم كيفية تعيين فنيي مراقبة الجودة'
+  },
+  'Learn how to assign quality control inspectors': {
+    ar: 'تعلم كيفية تعيين مفتشي مراقبة الجودة'
+  },
+  // Section headings
 };
 
 export default qcInspectorHelpTranslations; 
