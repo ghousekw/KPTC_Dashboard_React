@@ -17,6 +17,18 @@ export const helpVideos = {
         ar: 'https://www.youtube.com/embed/nYdVBe4mZKo'
       }
     }
+  },
+  qcInspector: {
+    assignInspector: {
+      development: {
+        en: '/assets/help/qcinspector/en/assign_inspector.mp4',
+        ar: '/assets/help/qcinspector/ar/assign_inspector.mp4'
+      },
+      production: {
+        en: 'https://www.youtube.com/embed/YZkvBzRuUn4',
+        ar: 'https://www.youtube.com/embed/V0qOSHiDSkM'
+      }
+    }
   }
 };
 

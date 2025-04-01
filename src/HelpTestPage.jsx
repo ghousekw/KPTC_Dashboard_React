@@ -104,6 +104,12 @@ const HelpTestPage = ({ onBack }) => {
           setSearchQuery('');
           return;
         }
+        
+        if (query.includes('qc') || query.includes('inspector') || query.includes('quality')) {
+          setActiveHelpPage('qcInspector');
+          setSearchQuery('');
+          return;
+        }
       }
       
       // Normal search
@@ -182,7 +188,7 @@ const HelpTestPage = ({ onBack }) => {
             {showTip && searchResults.length === 0 && (
               <div className="search-tip">
                 <p>{getTranslation('Pro tip: Try searching with:')}</p>
-                <code>@LoginHelp.jsx</code> {getTranslation('or')} <code>@DashboardHelp.jsx</code> {getTranslation('or')} <code>@MOIJobCardHelp.jsx</code>
+                <code>@LoginHelp.jsx</code> {getTranslation('or')} <code>@DashboardHelp.jsx</code> {getTranslation('or')} <code>@MOIJobCardHelp.jsx</code> {getTranslation('or')} <code>@QCInspectorHelp.jsx</code>
               </div>
             )}
             
@@ -263,13 +269,13 @@ const HelpTestPage = ({ onBack }) => {
             
             <div 
               className="help-card"
-              onClick={() => handleHelpCardClick('test')}
+              onClick={() => handleHelpCardClick('qcInspector')}
               role="button"
               tabIndex={0}
             >
-              <div className="help-card-icon">❓</div>
-              <h3>{getTranslation('Test Not Found')}</h3>
-              <p>{getTranslation('See what happens when help content is not available')}</p>
+              <div className="help-card-icon">👨‍🔧</div>
+              <h3>{getTranslation('QC Inspector Assignment Help')}</h3>
+              <p>{getTranslation('Learn how to assign quality control inspectors')}</p>
             </div>
           </div>
           

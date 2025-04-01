@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import LoginHelp from './login/LoginHelp';
 import DashboardHelp from './dashboard/DashboardHelp';
 import MOIJobCardHelp from './moi/MOIJobCardHelp';
+import QCInspectorHelp from './qcinspector/QCInspectorHelp';
 import { useHelpLanguage } from './context/HelpLanguageContext';
 import './HelpContainer.css';
 
@@ -30,6 +31,12 @@ const HelpContainer = ({ currentPage, onClose }) => {
       label: getTranslation('MOI Job Card Help'),
       description: getTranslation('Learn how to manage MOI job cards'),
       keywords: ['moi', 'job card', 'vehicle', 'maintenance', 'service']
+    },
+    {
+      id: 'qcInspector',
+      label: getTranslation('QC Inspector Assignment Help'),
+      description: getTranslation('Learn how to assign quality control inspectors'),
+      keywords: ['qc', 'inspector', 'assign', 'quality control', 'job card', 'inspection']
     },
     // Add more pages as you create more help components
   ], [language, getTranslation]); // Only recreate when language changes
@@ -67,6 +74,8 @@ const HelpContainer = ({ currentPage, onClose }) => {
         return <DashboardHelp />;
       case 'moiJobCard':
         return <MOIJobCardHelp />;
+      case 'qcInspector':
+        return <QCInspectorHelp />;
       default:
         return (
           <div className="help-not-found">

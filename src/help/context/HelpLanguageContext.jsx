@@ -8,6 +8,7 @@ import helpContainerTranslations from './translations/helpContainer';
 import helpTestPageTranslations from './translations/helpTestPage';
 import mediaViewerTranslations from './translations/mediaViewer';
 import moiHelpTranslations from './translations/moiHelp';
+import qcInspectorHelpTranslations from './translations/qcInspectorHelp';
 
 // Create the context
 const HelpLanguageContext = createContext();
@@ -38,7 +39,8 @@ export const HelpLanguageProvider = ({ children }) => {
       ...helpContainerTranslations, 
       ...helpTestPageTranslations,
       ...mediaViewerTranslations,
-      ...moiHelpTranslations
+      ...moiHelpTranslations,
+      ...qcInspectorHelpTranslations
     };
     
     return translations[key]?.ar || key;
@@ -54,6 +56,7 @@ export const HelpLanguageProvider = ({ children }) => {
       case 'helpTestPage': return helpTestPageTranslations;
       case 'mediaViewer': return mediaViewerTranslations;
       case 'moiHelp': return moiHelpTranslations;
+      case 'qcInspectorHelp': return qcInspectorHelpTranslations;
       default: return {};
     }
   };
@@ -74,7 +77,8 @@ export const HelpLanguageProvider = ({ children }) => {
     const moduleToPage = {
       'loginHelp': 'login',
       'dashboardHelp': 'dashboard',
-      'moiHelp': 'moiJobCard'
+      'moiHelp': 'moiJobCard',
+      'qcInspectorHelp': 'qcInspector'
     };
     
     // Helper function to add a unique result
@@ -109,6 +113,28 @@ export const HelpLanguageProvider = ({ children }) => {
           title: 'Dashboard Help',
           content: 'Dashboard features and usage guide',
           match: 'Direct component reference: DashboardHelp',
+          relevance: 10 // Highest priority for direct component references
+        });
+      }
+      
+      if (normalizedQuery.includes('moi') || normalizedQuery === 'moijobcardhelp') {
+        addUniqueResult({
+          id: 'direct-moi',
+          page: 'moiJobCard',
+          title: 'MOI Job Card Help',
+          content: 'MOI job card management guide',
+          match: 'Direct component reference: MOIJobCardHelp',
+          relevance: 10 // Highest priority for direct component references
+        });
+      }
+      
+      if (normalizedQuery.includes('qcinspector') || normalizedQuery === 'qcinspectorhelp') {
+        addUniqueResult({
+          id: 'direct-qcinspector',
+          page: 'qcInspector',
+          title: 'QC Inspector Assignment Help',
+          content: 'QC Inspector assignment guide',
+          match: 'Direct component reference: QCInspectorHelp',
           relevance: 10 // Highest priority for direct component references
         });
       }
@@ -164,6 +190,7 @@ export const HelpLanguageProvider = ({ children }) => {
         case 'login': return getTranslation('Login Help', moduleName);
         case 'dashboard': return getTranslation('Dashboard Help', moduleName);
         case 'moiJobCard': return getTranslation('MOI Job Card Help', moduleName);
+        case 'qcInspector': return getTranslation('QC Inspector Assignment Help', moduleName);
         default: return page.charAt(0).toUpperCase() + page.slice(1) + ' Help';
       }
     };
@@ -172,6 +199,7 @@ export const HelpLanguageProvider = ({ children }) => {
     searchModule(loginHelpTranslations, 'loginHelp');
     searchModule(dashboardHelpTranslations, 'dashboardHelp');
     searchModule(moiHelpTranslations, 'moiHelp');
+    searchModule(qcInspectorHelpTranslations, 'qcInspectorHelp');
     
     // If no results but we have a general query, provide helpful options
     if (results.length === 0) {
@@ -207,6 +235,19 @@ export const HelpLanguageProvider = ({ children }) => {
           page: 'moiJobCard',
           title: 'MOI Job Card Help',
           content: 'Vehicle maintenance and job card management',
+          match: null,
+          relevance: 3
+        });
+      }
+      
+      if (searchQuery.includes('qc') || searchQuery.includes('inspector') || 
+          searchQuery.includes('quality') || searchQuery.includes('assign') ||
+          searchQuery.includes('control')) {
+        addUniqueResult({
+          id: 'fallback-qcinspector',
+          page: 'qcInspector',
+          title: 'QC Inspector Assignment Help',
+          content: 'Quality Control Inspector assignment and management',
           match: null,
           relevance: 3
         });
@@ -303,6 +344,15 @@ export const useMoiHelpTranslations = () => {
   return {
     ...context,
     getTranslation: (key) => context.getTranslation(key, 'moiHelp')
+  };
+};
+
+export const useQCInspectorHelpTranslations = () => {
+  const context = useHelpLanguage();
+  
+  return {
+    ...context,
+    getTranslation: (key) => context.getTranslation(key, 'qcInspectorHelp')
   };
 };
 
